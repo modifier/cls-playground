@@ -11,6 +11,6 @@
   }
 </script>
 <div>
-  <Range on:change={fontSizeChange} />
+  <Range on:change={fontSizeChange} max="70" />
   <label>Font Size: <span>{fontSize}px</span></label>
 </div>

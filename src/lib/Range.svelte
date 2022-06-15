@@ -15,4 +15,4 @@
 </script>
 
 
-<input type="range" value={value} min={min} max={max} step={step} on:change={handleChange} />
+<input type="range" value={value} min={min} max={max} step={step} on:input={handleChange} />
