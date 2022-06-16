@@ -1,18 +1,8 @@
 <script>
   const KEY = 'AIzaSyC6-Vr6LLjHcH_edpIXpJn6CZXUlSmhIvg';
 
-  import {createEventDispatcher} from 'svelte';
-
-  export let initial = "Merriweather";
-  let value = initial;
+  export let value;
   let families = [];
-
-  const dispatch = createEventDispatcher();
-  function changeFontFamily(e) {
-    value = e.target.value;
-
-    dispatch('change', { value })
-  }
 
   function getGoogleFonts() {
     const request = new XMLHttpRequest();
@@ -30,7 +20,7 @@
   getGoogleFonts();
 </script>
 
-<input value={value} placeholder="Font name" list="families" on:change={changeFontFamily} />
+<input bind:value={value} placeholder="Font name" list="families" />
 <datalist id="families">
   {#each families as family}
     <option value={family.family} />

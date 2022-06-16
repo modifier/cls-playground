@@ -3,34 +3,17 @@
   import { createEventDispatcher } from 'svelte';
 
   const dispatch = createEventDispatcher();
-  let ascentOverride = 0;
-  let descentOverride = 0;
-  let lineGapOverride = 0;
-
-  function ascentOverrideChange({ detail: { value }}) {
-    ascentOverride = value;
-    dispatch('change', { ascentOverride, descentOverride, lineGapOverride });
-  }
-
-  function descentOverrideChange({ detail: { value }}) {
-    descentOverride = value;
-    dispatch('change', { ascentOverride, descentOverride, lineGapOverride });
-  }
-
-  function lineGapOverrideChange({ detail: { value }}) {
-    lineGapOverride = value;
-    dispatch('change', { ascentOverride, descentOverride, lineGapOverride });
-  }
+  export let value;
 </script>
 <div>
-  <Range on:change={ascentOverrideChange} />
-  <label>Ascent Override: <span>{ascentOverride}%</span></label>
+  <Range bind:value={value.ascentOverride} />
+  <label>Ascent Override: <span>{value.ascentOverride}%</span></label>
 </div>
 <div>
-  <Range on:change={descentOverrideChange} />
-  <label>Descent Override: <span>{descentOverride}%</span></label>
+  <Range bind:value={value.descentOverride} />
+  <label>Descent Override: <span>{value.descentOverride}%</span></label>
 </div>
 <div>
-  <Range on:change={lineGapOverrideChange} />
-  <label>Line Gap Override: <span>{lineGapOverride}%</span></label>
+  <Range bind:value={value.lineGapOverride} />
+  <label>Line Gap Override: <span>{value.lineGapOverride}%</span></label>
 </div>

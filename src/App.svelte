@@ -7,30 +7,19 @@
   import Comparison from './lib/Comparison.svelte';
 
   let fontSize = 16;
-  let primaryFontFamily = '';
-  let fallbackFontProps = {};
+  let primaryFontFamily = 'Merriweather';
+  let fallbackFontFamily = 'Georgia';
+  let fallbackSpacing = {
+    letterSpacing: 0,
+    wordSpacing: 0,
+  };
+  let fallbackFontProps = {
+    ascentOverride: 0,
+    descentOverride: 0,
+    lineGapOverride: 0,
+  };
 
-  function changePrimaryFontFamily({ detail: { value }}) {
-    primaryFontFamily = value;
-  }
-
-  function changeFallbackFontFamily({ detail: { value }}) {
-    fallbackFontProps.fontFamily = value;
-  }
-
-  function changeFontSize({ detail }) {
-    fontSize = detail.fontSize;
-  }
-
-  function changeSpacing({ detail }) {
-    fallbackFontProps = { ...fallbackFontProps, ...detail };
-  }
-
-  function changeFmods({ detail }) {
-    fallbackFontProps = { ...fallbackFontProps, ...detail };
-  }
-
-  function getFontFace({ fontFamily, ascentOverride, descentOverride, lineGapOverride }) {
+  function getFontFace(fontFamily, { ascentOverride, descentOverride, lineGapOverride }) {
     const params = {
       'font-family': 'fallback-font',
       src: `local(${fontFamily})`
@@ -61,23 +50,23 @@
   {@html `
   <style>
     @font-face {
-      ${getFontFace(fallbackFontProps)}
+      ${getFontFace(fallbackFontFamily, fallbackFontProps)}
     }
   </style>`}
 </svelte:head>
 
 <main>
   <div class="primary">
-    <PrimaryFontSelector on:change={changePrimaryFontFamily} />
-    <SpacingForm on:change={changeSpacing} />
-    <FModsForm on:change={changeFmods} />
+    <PrimaryFontSelector bind:value={primaryFontFamily} />
+    <CommonForm bind:fontSize={fontSize} />
   </div>
   <div class="fallback">
-    <FallbackFontSelector on:change={changeFallbackFontFamily} />
-    <CommonForm on:change={changeFontSize} />
+    <FallbackFontSelector bind:value={fallbackFontFamily} />
+    <SpacingForm bind:value={fallbackSpacing} />
+    <FModsForm bind:value={fallbackFontProps} />
   </div>
   <div class="comparison">
-    <Comparison fontSize={fontSize} fallbackFontProps={fallbackFontProps} primaryFontFamily={primaryFontFamily} />
+    <Comparison fontSize={fontSize} fallbackFontProps={fallbackSpacing} primaryFontFamily={primaryFontFamily} />
   </div>
 </main>
 

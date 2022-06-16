@@ -3,14 +3,9 @@
   import {createEventDispatcher} from 'svelte';
 
   const dispatch = createEventDispatcher();
-  let fontSize = 14;
-
-  function fontSizeChange({ detail: { value }}) {
-    fontSize = value;
-    dispatch('change', { fontSize });
-  }
+  export let fontSize;
 </script>
 <div>
-  <Range on:change={fontSizeChange} max="70" />
+  <Range bind:value={fontSize} max="70" />
   <label>Font Size: <span>{fontSize}px</span></label>
 </div>

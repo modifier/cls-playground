@@ -5,14 +5,8 @@
   export let max = 200;
   export let min = 0;
   export let step = 1;
-  export let initial = 0;
-  let value = initial;
-
-  function handleChange(e) {
-    value = e.target.value;
-    dispatch('change', { value });
-  }
+  export let value;
 </script>
 
 
-<input type="range" value={value} min={min} max={max} step={step} on:input={handleChange} />
+<input type="range" bind:value={value} min={min} max={max} step={step} />
