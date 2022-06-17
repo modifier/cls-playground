@@ -1,8 +1,5 @@
 <script>
   import Range from './Range.svelte';
-  import { createEventDispatcher } from 'svelte';
-
-  const dispatch = createEventDispatcher();
   export let value;
 </script>
 <div>

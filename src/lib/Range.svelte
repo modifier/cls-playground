@@ -1,7 +1,4 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
-
-  const dispatch = createEventDispatcher();
   export let max = 200;
   export let min = 0;
   export let step = 1;
@@ -9,4 +6,4 @@
 </script>
 
 
-<input type="range" bind:value={value} min={min} max={max} step={step} />
+<input type="range" bind:value={value} min={min} max={max} step={step} on:input />

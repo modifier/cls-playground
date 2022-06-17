@@ -1,10 +1,10 @@
 <script>
-  import FModsForm from './lib/FModsForm.svelte';
   import SpacingForm from './lib/SpacingForm.svelte';
   import PrimaryFontSelector from './lib/PrimaryFontSelector.svelte';
   import FallbackFontSelector from './lib/FallbackFontSelector.svelte';
   import CommonForm from './lib/CommonForm.svelte';
   import Comparison from './lib/Comparison.svelte';
+  import FModsBothForm from './lib/FModsBothForm.svelte';
 
   let fontSize = 16;
   let primaryFontFamily = 'Merriweather';
@@ -19,7 +19,7 @@
     lineGapOverride: 0,
   };
 
-  function getFontFace(fontFamily, { ascentOverride, descentOverride, lineGapOverride }) {
+  function getFontFace(fontFamily, {ascentOverride, descentOverride, lineGapOverride}) {
     const params = {
       'font-family': 'fallback-font',
       src: `local(${fontFamily})`
@@ -63,7 +63,7 @@
   <div class="fallback">
     <FallbackFontSelector bind:value={fallbackFontFamily} />
     <SpacingForm bind:value={fallbackSpacing} />
-    <FModsForm bind:value={fallbackFontProps} />
+    <FModsBothForm bind:value={fallbackFontProps} />
   </div>
   <div class="comparison">
     <Comparison fontSize={fontSize} fallbackFontProps={fallbackSpacing} primaryFontFamily={primaryFontFamily} />
