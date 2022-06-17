@@ -6,7 +6,10 @@
   import Comparison from './lib/Comparison.svelte';
   import FModsBothForm from './lib/FModsBothForm.svelte';
 
-  let fontSize = 16;
+  let commonProps = {
+    fontSize: 16,
+    fontWeight: 300,
+  };
   let primaryFontFamily = 'Merriweather';
   let fallbackFontFamily = 'Georgia';
   let fallbackSpacing = {
@@ -19,7 +22,7 @@
     lineGapOverride: 0,
   };
 
-  function getFontFace(fontFamily, {ascentOverride, descentOverride, lineGapOverride}) {
+  function getFontFace(fontFamily, { fontWeight }, {ascentOverride, descentOverride, lineGapOverride}) {
     const params = {
       'font-family': 'fallback-font',
       src: `local(${fontFamily})`
@@ -50,7 +53,7 @@
   {@html `
   <style>
     @font-face {
-      ${getFontFace(fallbackFontFamily, fallbackFontProps)}
+      ${getFontFace(fallbackFontFamily, commonProps, fallbackFontProps)}
     }
   </style>`}
 </svelte:head>
@@ -58,7 +61,7 @@
 <main>
   <div class="primary">
     <PrimaryFontSelector bind:value={primaryFontFamily} />
-    <CommonForm bind:fontSize={fontSize} />
+    <CommonForm bind:value={commonProps} />
   </div>
   <div class="fallback">
     <FallbackFontSelector bind:value={fallbackFontFamily} />
@@ -66,7 +69,7 @@
     <FModsBothForm bind:value={fallbackFontProps} />
   </div>
   <div class="comparison">
-    <Comparison fontSize={fontSize} fallbackFontProps={fallbackSpacing} primaryFontFamily={primaryFontFamily} />
+    <Comparison commonProps={commonProps} fallbackSpacing={fallbackSpacing} primaryFontFamily={primaryFontFamily} />
   </div>
 </main>
 

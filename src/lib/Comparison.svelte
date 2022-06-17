@@ -1,6 +1,6 @@
 <script>
-  export let fontSize;
-  export let fallbackFontProps;
+  export let commonProps;
+  export let fallbackSpacing;
   export let primaryFontFamily;
   let differentColor = true;
   let fout = false;
@@ -18,13 +18,18 @@
       <input type="checkbox" bind:checked={differentColor}>Use different colours for each font
     </label>
   </div>
-  <div class="overlapped" class:overlapped--different-color={differentColor} class:overlapped--fout={fout} style:font-size="{fontSize}px">
+  <div class="overlapped"
+       class:overlapped--different-color={differentColor}
+       class:overlapped--fout={fout}
+       style:font-size="{commonProps.fontSize}px"
+       style:font-weight={commonProps.fontWeight}
+  >
     <div class="primary" style:font-family={primaryFontFamily}>
       {text}
     </div>
     <div class="fallback"
-         style:letter-spacing="{fallbackFontProps.letterSpacing}px"
-         style:word-spacing="{fallbackFontProps.wordSpacing}px">
+         style:letter-spacing="{fallbackSpacing.letterSpacing}px"
+         style:word-spacing="{fallbackSpacing.wordSpacing}px">
       {text}
     </div>
   </div>
