@@ -20,9 +20,10 @@
     ascentOverride: 0,
     descentOverride: 0,
     lineGapOverride: 0,
+    sizeAdjust: 100,
   };
 
-  function getFontFace(fontFamily, { fontWeight }, {ascentOverride, descentOverride, lineGapOverride}) {
+  function getFontFace(fontFamily, {ascentOverride, descentOverride, lineGapOverride, sizeAdjust}) {
     const params = {
       'font-family': 'fallback-font',
       src: `local(${fontFamily})`
@@ -40,6 +41,10 @@
       params['line-gap-override'] = `${lineGapOverride}%`;
     }
 
+    if (sizeAdjust) {
+      params['size-adjust'] = `${sizeAdjust}%`;
+    }
+
     return Object.entries(params)
             .map(([key, value]) => `${key}: ${value};`)
             .join('\n');
@@ -50,7 +55,7 @@
   {@html `
   <style>
     @font-face {
-      ${getFontFace(fallbackFontFamily, commonProps, fallbackFontProps)}
+      ${getFontFace(fallbackFontFamily, fallbackFontProps)}
     }
   </style>`}
 </svelte:head>
