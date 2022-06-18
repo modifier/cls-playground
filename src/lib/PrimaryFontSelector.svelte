@@ -49,7 +49,7 @@
 </svelte:head>
 
 {#if useGoogleFonts}
-  <input bind:value={value} placeholder="Font name" list="families" />
+  <input bind:value={value} placeholder="Font name" list="families" class="cls-control__text" />
   <datalist id="families">
     {#each families as family}
       <option value={family.family} />
@@ -59,9 +59,9 @@
   <FontUpload on:upload={onFileUploaded} />
 {/if}
 <div>
-  <label>
-    <input type="checkbox" bind:checked={useGoogleFonts}>
-    <span>
+  <label class="cls-control">
+    <input type="checkbox" bind:checked={useGoogleFonts} class="cls-control__checkbox" />
+    <span class="cls-control__checkbox-label">
       {#if useGoogleFonts}
         Download from Google Fonts
       {:else if uploadedFontValue}

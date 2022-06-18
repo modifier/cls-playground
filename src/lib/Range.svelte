@@ -30,7 +30,7 @@
 
 <div class="range">
   <RepeatButton perform={decrease} value="&minus;" type="left" />
-  <input type="number" bind:value={value} min={min} max={max} step={step} on:input on:change={onChange} class="input" />
+  <input type="number" bind:value={value} min={min} max={max} step={step} on:input on:change={onChange} class="input cls-control__number" />
   {#if suffix}
     <span class="suffix">{suffix}</span>
   {/if}
@@ -40,7 +40,7 @@
 <style>
   .range {
     display: inline-flex;
-    width: 6.5rem;
+    width: 8rem;
     font-size: 1rem;
   }
 
@@ -48,7 +48,6 @@
     flex: 0 0 auto;
     border: #d9d9d9 solid;
     border-width: 1px 0;
-    line-height: 1em;
     padding: 0 0.25rem;
   }
 

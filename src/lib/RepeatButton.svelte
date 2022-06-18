@@ -28,11 +28,17 @@
   }
 </script>
 
-<input type="button" value={value} on:mousedown={start} on:mouseup={stop} class="button" class:button--left={type === 'left'} class:button--right={type === 'right'} />
+<input type="button"
+       value={value}
+       on:mousedown={start}
+       on:mouseup={stop}
+       class="button"
+       class:button--left={type === 'left'}
+       class:button--right={type === 'right'} />
 <style>
   .button {
     --border-radius: 0.3rem;
-    --color: #1890ff;
+    --color: #50b9de;
     color: white;
     flex: 0 0 auto;
     background-color: var(--color);

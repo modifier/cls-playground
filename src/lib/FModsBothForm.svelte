@@ -6,8 +6,9 @@
   export let value;
 </script>
 
-<label>
-  <input type="checkbox" bind:checked={alternativeMode} />Use alternative mode
+<label class="cls-control">
+  <input type="checkbox" bind:checked={alternativeMode} class="cls-control__checkbox" />
+  <span class="cls-control__checkbox-label">Use alternative mode</span>
 </label>
 {#if alternativeMode}
   <FModsAltForm bind:value={value} />
