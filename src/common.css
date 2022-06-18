@@ -24,7 +24,7 @@ body {
 
 .cls-control__text:focus-visible,
 .cls-control__number:focus-visible {
-  outline-color: #999;
+  outline-width: 0;
 }
 
 .cls-control__checkbox {

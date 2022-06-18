@@ -49,7 +49,7 @@
 </svelte:head>
 
 {#if useGoogleFonts}
-  <input bind:value={value} placeholder="Font name" list="families" class="cls-control__text" />
+  <input bind:value={googleFontValue} placeholder="Font name" list="families" class="cls-control__text" />
   <datalist id="families">
     {#each families as family}
       <option value={family.family} />

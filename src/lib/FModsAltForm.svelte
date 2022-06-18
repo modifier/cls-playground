@@ -33,17 +33,17 @@
 </script>
 <div class="cls-control">
   <label class="cls-control__label">Total Line Height</label>
-  <Range bind:value={altValue.totalLineHeight} on:input={updateValue} suffix="%" />
+  <Range bind:value={altValue.totalLineHeight} on:input={updateValue} min={0} suffix="%" />
 </div>
 <div class="cls-control">
   <label class="cls-control__label">Ascent Height</label>
-  <Range bind:value={altValue.ascentHeight} on:input={updateValue} suffix="%" />
+  <Range bind:value={altValue.ascentHeight} on:input={updateValue} min={0} suffix="%" />
 </div>
 <div class="cls-control">
   <label class="cls-control__label">Line Gap Override</label>
-  <Range bind:value={altValue.lineGapOverride} on:input={updateValue} suffix="%" />
+  <Range bind:value={altValue.lineGapOverride} on:input={updateValue} min={0} suffix="%" />
 </div>
 <div class="cls-control">
   <label class="cls-control__label">Size Adjust</label>
-  <Range bind:value={value.sizeAdjust} suffix="%" />
+  <Range bind:value={value.sizeAdjust} min={0} suffix="%" />
 </div>

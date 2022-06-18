@@ -14,6 +14,8 @@
     if (min !== null && value < min) {
         value = min;
     }
+
+    dispatch('input');
   }
 
   function increase() {
@@ -21,6 +23,7 @@
     if (max !== null && value > max) {
       value = max;
     }
+    dispatch('input');
   }
 
   function onChange() {
