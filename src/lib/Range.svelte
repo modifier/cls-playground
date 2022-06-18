@@ -24,13 +24,20 @@
   }
 
   function onChange() {
-    value = Math.round(value / step) * step;
+    value = Math.max(Math.min(Math.round(value / step) * step, max), min);
   }
 </script>
 
 <div class="range">
   <RepeatButton perform={decrease} value="&minus;" type="left" />
-  <input type="number" bind:value={value} min={min} max={max} step={step} on:input on:change={onChange} class="input cls-control__number" />
+  <input type="number"
+         bind:value={value}
+         min={min}
+         max={max}
+         step={step}
+         on:input
+         on:change={onChange}
+         class="input cls-control__number" />
   {#if suffix}
     <span class="suffix">{suffix}</span>
   {/if}

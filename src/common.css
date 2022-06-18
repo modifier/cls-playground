@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .cls-control {
   display: flex;
   width: 100%;
