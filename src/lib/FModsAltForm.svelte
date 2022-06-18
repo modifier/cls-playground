@@ -8,8 +8,8 @@
   }
 
   function getOriginalValues({ totalLineHeight, ascentHeight, lineGapOverride, sizeAdjust }) {
-    const ascentOverride = Math.max(Math.round(ascentHeight - lineGapOverride / 2), 1);
-    const descentOverride = Math.max(totalLineHeight - ascentOverride - lineGapOverride, 1);
+    const ascentOverride = Math.round(ascentHeight - lineGapOverride / 2);
+    const descentOverride = totalLineHeight - ascentOverride - lineGapOverride;
 
     return {
       ascentOverride,
@@ -32,18 +32,18 @@
   }
 </script>
 <div>
-  <Range bind:value={altValue.totalLineHeight} on:input={updateValue} />
-  <label>Total Line Height: <span>{altValue.totalLineHeight}%</span></label>
+  <label>Total Line Height</label>
+  <Range bind:value={altValue.totalLineHeight} on:input={updateValue} suffix="%" />
 </div>
 <div>
-  <Range bind:value={altValue.ascentHeight} on:input={updateValue} />
-  <label>Ascent Height: <span>{altValue.ascentHeight}%</span></label>
+  <label>Ascent Height</label>
+  <Range bind:value={altValue.ascentHeight} on:input={updateValue} suffix="%" />
 </div>
 <div>
-  <Range bind:value={altValue.lineGapOverride} on:input={updateValue} />
-  <label>Line Gap Override: <span>{altValue.lineGapOverride}%</span></label>
+  <label>Line Gap Override</label>
+  <Range bind:value={altValue.lineGapOverride} on:input={updateValue} suffix="%" />
 </div>
 <div>
-  <Range bind:value={value.sizeAdjust} />
-  <label>Size Adjust: <span>{value.sizeAdjust}%</span></label>
+  <label>Size Adjust</label>
+  <Range bind:value={value.sizeAdjust} suffix="%" />
 </div>

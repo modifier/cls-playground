@@ -29,19 +29,19 @@
       src: `local(${fontFamily})`
     };
 
-    if (ascentOverride) {
+    if (typeof ascentOverride === 'number') {
       params['ascent-override'] = `${ascentOverride}%`;
     }
 
-    if (descentOverride) {
+    if (typeof descentOverride === 'number') {
       params['descent-override'] = `${descentOverride}%`;
     }
 
-    if (lineGapOverride) {
+    if (typeof lineGapOverride === 'number') {
       params['line-gap-override'] = `${lineGapOverride}%`;
     }
 
-    if (sizeAdjust) {
+    if (typeof sizeAdjust === 'number') {
       params['size-adjust'] = `${sizeAdjust}%`;
     }
 

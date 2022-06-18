@@ -1,13 +1,14 @@
 <script>
   import Range from './Range.svelte';
+  import './common.css';
 
   export let value;
 </script>
-<div>
-  <Range bind:value={value.fontSize} max="70" />
-  <label>Font Size: <span>{value.fontSize}px</span></label>
+<div class="form">
+  <label>Font Size</label>
+  <Range bind:value={value.fontSize} max="70" suffix="px" />
 </div>
-<div>
-  <Range bind:value={value.fontWeight} max="900" min="200" step="100" />
-  <label>Font Weight: <span>{value.fontWeight}</span></label>
+<div class="form">
+  <label>Font Weight</label>
+  <Range bind:value={value.fontWeight} max={900} min={200} step={100} />
 </div>

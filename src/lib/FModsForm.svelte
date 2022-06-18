@@ -3,18 +3,18 @@
   export let value;
 </script>
 <div>
-  <Range bind:value={value.ascentOverride} />
-  <label>Ascent Override: <span>{value.ascentOverride}%</span></label>
+  <label>Ascent Override</label>
+  <Range bind:value={value.ascentOverride} suffix="%" />
 </div>
 <div>
-  <Range bind:value={value.descentOverride} />
-  <label>Descent Override: <span>{value.descentOverride}%</span></label>
+  <label>Descent Override</label>
+  <Range bind:value={value.descentOverride} suffix="%" />
 </div>
 <div>
-  <Range bind:value={value.lineGapOverride} />
-  <label>Line Gap Override: <span>{value.lineGapOverride}%</span></label>
+  <label>Line Gap Override</label>
+  <Range bind:value={value.lineGapOverride} suffix="%" />
 </div>
 <div>
-  <Range bind:value={value.sizeAdjust} />
-  <label>Size Adjust: <span>{value.sizeAdjust}%</span></label>
+  <label>Size Adjust</label>
+  <Range bind:value={value.sizeAdjust} suffix="%" />
 </div>
