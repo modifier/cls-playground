@@ -31,19 +31,19 @@
     };
   }
 </script>
-<div>
+<div class="form">
   <label>Total Line Height</label>
   <Range bind:value={altValue.totalLineHeight} on:input={updateValue} suffix="%" />
 </div>
-<div>
+<div class="form">
   <label>Ascent Height</label>
   <Range bind:value={altValue.ascentHeight} on:input={updateValue} suffix="%" />
 </div>
-<div>
+<div class="form">
   <label>Line Gap Override</label>
   <Range bind:value={altValue.lineGapOverride} on:input={updateValue} suffix="%" />
 </div>
-<div>
+<div class="form">
   <label>Size Adjust</label>
   <Range bind:value={value.sizeAdjust} suffix="%" />
 </div>

@@ -1,6 +1,7 @@
 <script>
   export let value;
   export let perform;
+  export let type;
 
   const INITIAL_TIME = 100;
   let timer;
@@ -27,9 +28,24 @@
   }
 </script>
 
-<input type="button" value={value} on:mousedown={start} on:mouseup={stop} class="button" />
+<input type="button" value={value} on:mousedown={start} on:mouseup={stop} class="button" class:button--left={type === 'left'} class:button--right={type === 'right'} />
 <style>
   .button {
+    --border-radius: 0.3rem;
+    --color: #1890ff;
+    color: white;
     flex: 0 0 auto;
+    background-color: var(--color);
+    border: 1px var(--color) solid;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .button--right {
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
+
+  .button--left {
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
   }
 </style>

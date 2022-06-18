@@ -29,23 +29,24 @@
 </script>
 
 <div class="range">
-  <RepeatButton perform={decrease} value="-" />
+  <RepeatButton perform={decrease} value="&minus;" type="left" />
   <input type="number" bind:value={value} min={min} max={max} step={step} on:input on:change={onChange} class="input" />
   {#if suffix}
     <span class="suffix">{suffix}</span>
   {/if}
-  <RepeatButton perform={increase} value="+" />
+  <RepeatButton perform={increase} value="+" type="right" />
 </div>
 
 <style>
   .range {
     display: inline-flex;
-    width: 100px;
+    width: 6.5rem;
+    font-size: 1rem;
   }
 
   .suffix {
     flex: 0 0 auto;
-    border: #000 solid;
+    border: #d9d9d9 solid;
     border-width: 1px 0;
     line-height: 1em;
     padding: 0 0.25rem;
@@ -54,8 +55,9 @@
   .input {
     flex: 1 1 auto;
     min-width: 0;
-    border: #000 solid;
+    border: #d9d9d9 solid;
     border-width: 1px 0;
+    font-size: 16px;
   }
 
   .input::-webkit-outer-spin-button,
