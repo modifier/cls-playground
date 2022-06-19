@@ -14,14 +14,14 @@
   export let suffix;
   let validationError = false;
   const dispatch = createEventDispatcher();
-  $: validate(value, false);
+  $: validate(value, min, max, false);
 
   function decrease() {
     if (value === null) {
       value = initial;
     }
     value -= step;
-    validate(value, !nonBlockingValidation);
+    validate();
 
     dispatch('change', value);
   }
@@ -31,22 +31,22 @@
       value = initial;
     }
     value += step;
-    validate(value, !nonBlockingValidation);
+    validate();
     dispatch('change', value);
   }
 
-  function validate(value, isBlocking) {
+  function validate(providedValue = value, minValue = min, maxValue = max, isBlocking = !nonBlockingValidation) {
     validationError = false;
-    if (max !== null && value !== null && value > max) {
+    if (maxValue !== null && providedValue !== null && providedValue > maxValue) {
       if (isBlocking) {
         value = max;
       } else {
         validationError = true;
       }
     }
-    if (min !== null && value !== null && value < min) {
+    if (minValue !== null && providedValue !== null && providedValue < minValue) {
       if (isBlocking) {
-        value = min;
+        value = minValue;
       } else {
         validationError = true;
       }
@@ -57,13 +57,13 @@
     if (integer) {
       value = Math.round(value / step) * step;
     }
-    validate(value, !nonBlockingValidation);
+    validate();
     dispatch('change', value);
   }
 
   function reset() {
     value = initial;
-    validate(value, !nonBlockingValidation);
+    validate();
     dispatch('change', value);
   }
 </script>
