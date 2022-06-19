@@ -6,34 +6,34 @@
   export let max = null;
   export let min = null;
   export let initial = 0;
-  export let placeholder;
+  export let integer = false;
+  export let placeholder = !integer ? initial : null;
   export let step = 1;
   export let value;
   export let suffix;
-  export let integer = false;
   const dispatch = createEventDispatcher();
 
   function decrease() {
     if (value === null) {
-      value = 0;
+      value = initial;
     }
     value -= step;
     if (min !== null && value < min) {
       value = min;
     }
 
-    dispatch('input', value);
+    dispatch('change', value);
   }
 
   function increase() {
     if (value === null) {
-      value = 0;
+      value = initial;
     }
     value += step;
     if (max !== null && value > max) {
       value = max;
     }
-    dispatch('input', value);
+    dispatch('change', value);
   }
 
   function onChange() {
@@ -46,16 +46,16 @@
     if (min !== null && value < min) {
       value = min;
     }
-    dispatch('input', value);
+    dispatch('change', value);
   }
 
   function reset() {
     value = initial;
-    dispatch('input', value);
+    dispatch('change', value);
   }
 </script>
 
-<div class="range" class:range--placeholder={value === null}>
+<div class="range" class:range--placeholder={value === null && initial === null}>
   <RepeatButton action={decrease} value="&minus;" />
   <input type="number"
          bind:value={value}
