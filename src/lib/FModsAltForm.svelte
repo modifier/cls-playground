@@ -1,7 +1,7 @@
 <script>
   import Range from './Range.svelte';
   export let value;
-  let altValue = getAlternativeValues(value);
+  let altValue;
 
   function updateValue({ detail }) {
     if (detail !== null) {
@@ -55,6 +55,8 @@
       ...rest
     };
   }
+
+  $: altValue = getAlternativeValues(value)
 </script>
 <div class="cls-control">
   <label class="cls-control__label">Total Line Height</label>

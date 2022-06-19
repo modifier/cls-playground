@@ -42,6 +42,7 @@
       @font-face {
         font-family: 'webfont-uploaded';
         src: url(${uploadedFileSource});
+        font-weight: 200;
       }
     </style>
     `}
