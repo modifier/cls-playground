@@ -1,5 +1,7 @@
 <script>
   import FontUpload from './FontUpload.svelte';
+  import ToggleFontMode from './ToggleFontMode.svelte';
+
   const KEY = 'AIzaSyC6-Vr6LLjHcH_edpIXpJn6CZXUlSmhIvg';
 
   export let value;
@@ -13,7 +15,7 @@
     const request = new XMLHttpRequest();
     let url = `https://www.googleapis.com/webfonts/v1/webfonts?key=${KEY}`;
     request.open('GET', url, true);
-    request.onreadystatechange = function() {
+    request.onreadystatechange = function () {
       if (request.readyState === 4 && request.status === 200) {
         const data = JSON.parse(request.responseText);
         families = data.items;
@@ -22,7 +24,7 @@
     request.send();
   }
 
-  function onFileUploaded({ detail: { source, fileName }}) {
+  function onFileUploaded({detail: {source, fileName}}) {
     uploadedFontValue = fileName;
     uploadedFileSource = source;
     value = 'webfont-uploaded';
@@ -48,10 +50,12 @@
   {/if}
 </svelte:head>
 
+<div class="cls-control cls-control--column">
+  <label for="primary-font-family" class="cls-control__text-label">
+    Primary font
+    <ToggleFontMode bind:useGoogleFonts={useGoogleFonts} />
+  </label>
 {#if useGoogleFonts}
-
-  <div class="cls-control cls-control--column">
-    <label for="primary-font-family" class="cls-control__text-label">Primary font</label>
     <input bind:value={googleFontValue}
            placeholder="Font name"
            list="families"
@@ -62,21 +66,12 @@
         <option value={family.family} />
       {/each}
     </datalist>
-  </div>
 {:else}
+  {#if uploadedFontValue}
+    <span class="cls-control__text">
+      {uploadedFontValue}
+    </span>
+  {/if}
   <FontUpload on:upload={onFileUploaded} />
 {/if}
-<div>
-  <label class="cls-control">
-    <input type="checkbox" bind:checked={useGoogleFonts} class="cls-control__checkbox" />
-    <span class="cls-control__checkbox-label">
-      {#if useGoogleFonts}
-        Download from Google Fonts
-      {:else if uploadedFontValue}
-        Use uploaded file &mdash; {uploadedFontValue}
-      {:else}
-        Upload file
-      {/if}
-    </span>
-  </label>
 </div>
