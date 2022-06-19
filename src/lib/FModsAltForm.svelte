@@ -1,7 +1,7 @@
 <script>
   import Range from './Range.svelte';
   export let value;
-  let altValue = getOriginalValues(value);
+  let altValue = getAlternativeValues(value);
 
   function updateValue({ detail }) {
     if (detail !== null) {
@@ -25,7 +25,7 @@
         ...rest
       };
     }
-    const ascentOverride = Math.max(Math.round(ascentHeight - lineGapOverride / 2), 0);
+    const ascentOverride = Math.max(ascentHeight - lineGapOverride / 2, 0);
     const descentOverride = Math.max(totalLineHeight - ascentOverride - lineGapOverride, 0);
 
     return {
@@ -46,7 +46,7 @@
       };
     }
     const totalLineHeight = ascentOverride + descentOverride + lineGapOverride;
-    const ascentHeight = Math.round(ascentOverride + lineGapOverride / 2);
+    const ascentHeight = ascentOverride + lineGapOverride / 2;
 
     return {
       ascentHeight,

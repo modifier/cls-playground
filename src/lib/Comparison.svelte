@@ -28,8 +28,8 @@
         {text}
       </div>
       <div class="fallback"
-           style:letter-spacing="{fallbackSpacing.letterSpacing}px"
-           style:word-spacing="{fallbackSpacing.wordSpacing}px">
+           style:letter-spacing="{fallbackSpacing.letterSpacing / 64}em"
+           style:word-spacing="{fallbackSpacing.wordSpacing / 64}em">
         {text}
       </div>
     </div>
@@ -63,7 +63,7 @@
     font-family: "fallback-font", sans-serif;
   }
 
-  .primary {
+  .fallback {
     position: absolute;
     top: 0;
     left: 0;

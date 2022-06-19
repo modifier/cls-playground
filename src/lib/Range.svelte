@@ -10,6 +10,7 @@
   export let step = 1;
   export let value;
   export let suffix;
+  export let integer = false;
   const dispatch = createEventDispatcher();
 
   function decrease() {
@@ -36,7 +37,9 @@
   }
 
   function onChange() {
-    value = Math.round(value / step) * step;
+    if (integer) {
+      value = Math.round(value / step) * step;
+    }
     if (max !== null && value > max) {
       value = max;
     }
