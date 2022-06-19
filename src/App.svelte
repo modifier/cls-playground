@@ -85,7 +85,7 @@
 
 <style>
   :root {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--sans-serif);
   }
 
   .cls-main {

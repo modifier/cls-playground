@@ -96,7 +96,7 @@
     border-width: 1px 0;
     font-size: 0.9rem;
     padding: 0.125rem 0.25rem;
-    font-family: "Open Sans", serif;
+    font-family: var(--sans-serif);
   }
 
   .input::-webkit-outer-spin-button,

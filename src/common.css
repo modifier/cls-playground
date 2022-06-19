@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
 
+:root {
+  --sans-serif: "Open Sans", "Open Sans-fallback", sans-serif;
+  --monospace: "Inconsolata", "Inconsolata-fallback", monospace;
+}
+
 html, body {
   min-height: 100vh;
 }
@@ -37,7 +42,7 @@ a, a:visited {
 }
 
 .cls-header-code {
-  font-family: 'Inconsolata', 'inconsolata-fallback', monospace;
+  font-family: var(--monospace);
 }
 
 .cls-app {
