@@ -8,19 +8,20 @@
   export let initial = 0;
   export let integer = false;
   export let placeholder = !integer ? initial : null;
+  export let nonBlockingValidation = false;
   export let step = 1;
   export let value;
   export let suffix;
+  let validationError = false;
   const dispatch = createEventDispatcher();
+  $: validate(value, false);
 
   function decrease() {
     if (value === null) {
       value = initial;
     }
     value -= step;
-    if (min !== null && value < min) {
-      value = min;
-    }
+    validate(value, !nonBlockingValidation);
 
     dispatch('change', value);
   }
@@ -30,32 +31,46 @@
       value = initial;
     }
     value += step;
-    if (max !== null && value > max) {
-      value = max;
-    }
+    validate(value, !nonBlockingValidation);
     dispatch('change', value);
+  }
+
+  function validate(value, isBlocking) {
+    validationError = false;
+    if (max !== null && value !== null && value > max) {
+      if (isBlocking) {
+        value = max;
+      } else {
+        validationError = true;
+      }
+    }
+    if (min !== null && value !== null && value < min) {
+      if (isBlocking) {
+        value = min;
+      } else {
+        validationError = true;
+      }
+    }
   }
 
   function onChange() {
     if (integer) {
       value = Math.round(value / step) * step;
     }
-    if (max !== null && value > max) {
-      value = max;
-    }
-    if (min !== null && value < min) {
-      value = min;
-    }
+    validate(value, !nonBlockingValidation);
     dispatch('change', value);
   }
 
   function reset() {
     value = initial;
+    validate(value, !nonBlockingValidation);
     dispatch('change', value);
   }
 </script>
 
-<div class="range" class:range--placeholder={value === null && initial === null}>
+<div class="range"
+     class:range--invalid={validationError}
+     class:range--placeholder={value === null && initial === null}>
   <RepeatButton action={decrease} value="&minus;" />
   <input type="number"
          bind:value={value}
@@ -100,6 +115,12 @@
     font-size: 0.9rem;
     padding: 0.125rem 0.25rem;
     font-family: var(--sans-serif);
+  }
+
+  .range--invalid .cls-control__number,
+  .range--invalid .suffix {
+    border-color: red;
+    color: red;
   }
 
   .input::-webkit-outer-spin-button,

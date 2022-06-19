@@ -29,6 +29,19 @@
   let fontFace;
   let showComparison = true;
 
+  function isResultValid({ascentOverride, descentOverride, lineGapOverride}) {
+    if (typeof ascentOverride === 'number' && ascentOverride < 0) {
+      return false;
+    }
+    if (typeof descentOverride === 'number' && descentOverride < 0) {
+      return false;
+    }
+    if (typeof lineGapOverride === 'number' && lineGapOverride < 0) {
+      return false;
+    }
+    return true;
+  }
+
   function getFontFace(fontFamily, {ascentOverride, descentOverride, lineGapOverride, sizeAdjust}) {
     const params = {
       'font-family': 'fallback-font',
@@ -88,8 +101,14 @@
   </div>
   <div class="comparison">
     <ComparisonToggle bind:showComparison={showComparison} />
-    <Comparison commonProps={commonProps} fallbackSpacing={fallbackSpacing} primaryFontFamily={primaryFontFamily} hidden={!showComparison} />
-    <Result fontFace={fontFace} hidden={showComparison} />
+    <Comparison
+            commonProps={commonProps}
+            fallbackSpacing={fallbackSpacing}
+            primaryFontFamily={primaryFontFamily}
+            hidden={!showComparison} />
+    <Result fontFace={fontFace}
+            isValid={isResultValid(fallbackFontProps)}
+            hidden={showComparison} />
   </div>
 </main>
 
