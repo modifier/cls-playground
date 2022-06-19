@@ -5,6 +5,8 @@
   import CommonForm from './lib/CommonForm.svelte';
   import Comparison from './lib/Comparison.svelte';
   import FModsBothForm from './lib/FModsBothForm.svelte';
+  import Result from './lib/Result.svelte';
+  import ComparisonToggle from './lib/ComparisonToggle.svelte';
 
   let commonProps = {
     fontSize: 16,
@@ -22,6 +24,8 @@
     lineGapOverride: null,
     sizeAdjust: 100,
   };
+  let fontFace;
+  let showComparison = true;
 
   function getFontFace(fontFamily, {ascentOverride, descentOverride, lineGapOverride, sizeAdjust}) {
     const params = {
@@ -41,21 +45,23 @@
       params['line-gap-override'] = `${lineGapOverride}%`;
     }
 
-    if (typeof sizeAdjust === 'number') {
+    if (sizeAdjust !== 100) {
       params['size-adjust'] = `${sizeAdjust}%`;
     }
 
     return Object.entries(params)
-            .map(([key, value]) => `${key}: ${value};`)
+            .map(([key, value]) => `  ${key}: ${value};`)
             .join('\n');
   }
+
+  $: fontFace = getFontFace(fallbackFontFamily, fallbackFontProps);
 </script>
 
 <svelte:head>
   {@html `
   <style>
     @font-face {
-      ${getFontFace(fallbackFontFamily, fallbackFontProps)}
+      ${fontFace}
     }
   </style>`}
 </svelte:head>
@@ -71,7 +77,9 @@
     <FModsBothForm bind:value={fallbackFontProps} />
   </div>
   <div class="comparison">
-    <Comparison commonProps={commonProps} fallbackSpacing={fallbackSpacing} primaryFontFamily={primaryFontFamily} />
+    <ComparisonToggle bind:showComparison={showComparison} />
+    <Comparison commonProps={commonProps} fallbackSpacing={fallbackSpacing} primaryFontFamily={primaryFontFamily} hidden={!showComparison} />
+    <Result fontFace={fontFace} hidden={showComparison} />
   </div>
 </main>
 
@@ -88,15 +96,22 @@
     box-sizing: border-box;
     gap: 2rem;
     justify-content: center;
+    position: relative;
+    flex: 0 1 1300px;
   }
 
   .primary,
   .fallback {
     flex: 0 0 auto;
+    align-self: flex-start;
+    position: sticky;
+    top: 0;
   }
 
   .comparison {
-    flex: 3 0 auto;
+    flex: 3 1 auto;
     max-width: 40rem;
+    display: flex;
+    flex-direction: column;
   }
 </style>

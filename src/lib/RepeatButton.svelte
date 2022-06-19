@@ -31,6 +31,7 @@
        value={value}
        on:mousedown={start}
        on:mouseup={stop}
+       on:mouseout={stop}
        class="button" />
 
 <style>
