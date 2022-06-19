@@ -60,9 +60,6 @@
   </style>`}
 </svelte:head>
 
-<header class="cls-header">
-  <h1 class="cls-header-title"><span class="cls-header-code">@font-face</span> playground</h1>
-</header>
 <main class="cls-main">
   <div class="primary">
     <PrimaryFontSelector bind:value={primaryFontFamily} />
@@ -79,24 +76,8 @@
 </main>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-
   :root {
     font-family: 'Open Sans', sans-serif;
-  }
-
-  .cls-header {
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-
-  .cls-header-title {
-    font-weight: 500;
-  }
-
-  .cls-header-code {
-    font-family: 'Inconsolata', 'inconsolata-fallback', monospace;
   }
 
   .cls-main {

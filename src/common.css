@@ -1,11 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+html, body {
+  min-height: 100vh;
+}
+
 body {
   margin: 0;
+}
+
+a, a:visited {
+  color: #50b9de;
+  font-weight: 400;
+}
+
+.cls-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.cls-header {
+  max-width: 1300px;
+  margin: 0 auto;
+  flex: 0 0 auto;
+  padding: 1rem 0;
+}
+
+.cls-header-title {
+  font-weight: 500;
+  margin: 0;
+}
+
+.cls-header-code {
+  font-family: 'Inconsolata', 'inconsolata-fallback', monospace;
+}
+
+.cls-app {
+  flex: 1 0 auto;
+}
+
+.cls-footer {
+  max-width: 1300px;
+  margin: 0 auto;
+  flex: 0 0 auto;
+  padding: 1rem 0;
 }
 
 .cls-control {
   display: flex;
   width: 100%;
   margin: 0 0 0.75rem;
+  font-weight: 300;
 }
 
 .cls-control--column {
@@ -21,6 +67,7 @@ body {
   padding-left: 0.25rem;
   color: #666;
   margin-bottom: -0.125rem;
+  font-weight: 400;
 }
 
 .cls-control__text {
