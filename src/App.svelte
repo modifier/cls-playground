@@ -17,9 +17,9 @@
     wordSpacing: 0,
   };
   let fallbackFontProps = {
-    ascentOverride: 0,
-    descentOverride: 0,
-    lineGapOverride: 0,
+    ascentOverride: null,
+    descentOverride: null,
+    lineGapOverride: null,
     sizeAdjust: 100,
   };
 

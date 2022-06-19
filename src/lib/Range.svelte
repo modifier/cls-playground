@@ -1,31 +1,38 @@
 <script>
   import RepeatButton from './RepeatButton.svelte';
-  import {createEventDispatcher} from 'svelte';
+  import { createEventDispatcher } from 'svelte';
   import ResetButton from './ResetButton.svelte';
 
   export let max = null;
   export let min = null;
-  export let initial = 0
+  export let initial = 0;
+  export let placeholder;
   export let step = 1;
   export let value;
   export let suffix;
   const dispatch = createEventDispatcher();
 
   function decrease() {
+    if (value === null) {
+      value = 0;
+    }
     value -= step;
     if (min !== null && value < min) {
       value = min;
     }
 
-    dispatch('input');
+    dispatch('input', value);
   }
 
   function increase() {
+    if (value === null) {
+      value = 0;
+    }
     value += step;
     if (max !== null && value > max) {
       value = max;
     }
-    dispatch('input');
+    dispatch('input', value);
   }
 
   function onChange() {
@@ -36,14 +43,16 @@
     if (min !== null && value < min) {
       value = min;
     }
+    dispatch('input', value);
   }
 
   function reset() {
     value = initial;
+    dispatch('input', value);
   }
 </script>
 
-<div class="range">
+<div class="range" class:range--placeholder={value === null}>
   <RepeatButton action={decrease} value="&minus;" />
   <input type="number"
          bind:value={value}
@@ -52,6 +61,7 @@
          step={step}
          on:input
          on:change={onChange}
+         placeholder={placeholder}
          class="input cls-control__number" />
   {#if suffix}
     <span class="suffix">{suffix}</span>
@@ -67,11 +77,16 @@
     font-size: 1rem;
   }
 
+  .range--placeholder .suffix {
+    display: none;
+  }
+
   .suffix {
     flex: 0 0 auto;
     border: #d9d9d9 solid;
     border-width: 1px 0;
     padding: 0 0.25rem;
+    font-size: 0.9rem;
   }
 
   .input {
@@ -79,7 +94,7 @@
     min-width: 0;
     border: #d9d9d9 solid;
     border-width: 1px 0;
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .input::-webkit-outer-spin-button,
