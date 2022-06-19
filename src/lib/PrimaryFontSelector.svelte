@@ -32,7 +32,7 @@
 
   getGoogleFonts();
 
-  $: value = useGoogleFonts ? googleFontValue : 'webfont-uploaded';
+  $: value = !useGoogleFonts && uploadedFontValue ? 'webfont-uploaded' : googleFontValue;
 </script>
 
 <svelte:head>

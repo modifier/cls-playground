@@ -32,11 +32,13 @@
     font-size: 0.9rem;
     color: #50b9de;
     text-decoration: underline;
+    cursor: pointer;
   }
 
   .link--selected {
     color: black;
     text-decoration: none;
     font-weight: 700;
+    cursor: default;
   }
 </style>

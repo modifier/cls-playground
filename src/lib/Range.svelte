@@ -86,6 +86,7 @@
     border: #d9d9d9 solid;
     border-width: 1px 0;
     padding: 0 0.25rem;
+    font-size: 0.9rem;
   }
 
   .cls-control__number {
@@ -93,7 +94,7 @@
     min-width: 0;
     border: #d9d9d9 solid;
     border-width: 1px 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 0.125rem 0.25rem;
   }
 
