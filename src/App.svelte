@@ -86,7 +86,6 @@
     flex-direction: row;
     max-width: 1600px;
     margin: 0 auto;
-    min-height: 100vh;
     box-sizing: border-box;
     gap: 2rem;
     justify-content: center;

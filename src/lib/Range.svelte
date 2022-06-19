@@ -86,15 +86,15 @@
     border: #d9d9d9 solid;
     border-width: 1px 0;
     padding: 0 0.25rem;
-    font-size: 0.9rem;
   }
 
-  .input {
+  .cls-control__number {
     flex: 1 1 auto;
     min-width: 0;
     border: #d9d9d9 solid;
     border-width: 1px 0;
     font-size: 1rem;
+    padding: 0.125rem 0.25rem;
   }
 
   .input::-webkit-outer-spin-button,

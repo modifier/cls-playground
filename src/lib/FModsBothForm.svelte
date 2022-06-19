@@ -7,7 +7,7 @@
   export let value;
 </script>
 
-<label class="cls-control">
+<label class="cls-control alternative-mode">
   <input type="checkbox" bind:checked={alternativeMode} class="cls-control__checkbox" />
   <span class="cls-control__checkbox-label">Use alternative mode</span>
 </label>
@@ -20,3 +20,9 @@
   <label class="cls-control__label">Size Adjust</label>
   <Range bind:value={value.sizeAdjust} min={0} initial={100} suffix="%" />
 </div>
+
+<style>
+  .alternative-mode {
+    margin-bottom: 0.25rem;
+  }
+</style>

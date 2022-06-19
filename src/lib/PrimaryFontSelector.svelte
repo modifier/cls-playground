@@ -49,12 +49,20 @@
 </svelte:head>
 
 {#if useGoogleFonts}
-  <input bind:value={googleFontValue} placeholder="Font name" list="families" class="cls-control__text" />
-  <datalist id="families">
-    {#each families as family}
-      <option value={family.family} />
-    {/each}
-  </datalist>
+
+  <div class="cls-control cls-control--column">
+    <label for="primary-font-family" class="cls-control__text-label">Primary font</label>
+    <input bind:value={googleFontValue}
+           placeholder="Font name"
+           list="families"
+           class="cls-control__text"
+           name="primary-font-family" />
+    <datalist id="families">
+      {#each families as family}
+        <option value={family.family} />
+      {/each}
+    </datalist>
+  </div>
 {:else}
   <FontUpload on:upload={onFileUploaded} />
 {/if}
