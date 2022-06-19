@@ -1,6 +1,7 @@
 <script>
   import FModsForm from './FModsForm.svelte';
   import FModsAltForm from './FModsAltForm.svelte';
+  import Range from './Range.svelte';
 
   let alternativeMode = false;
   export let value;
@@ -15,3 +16,7 @@
 {:else}
   <FModsForm bind:value={value} />
 {/if}
+<div class="cls-control">
+  <label class="cls-control__label">Size Adjust</label>
+  <Range bind:value={value.sizeAdjust} min={0} initial={100} suffix="%" />
+</div>

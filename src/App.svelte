@@ -8,7 +8,7 @@
 
   let commonProps = {
     fontSize: 16,
-    fontWeight: 300,
+    fontWeight: 200,
   };
   let primaryFontFamily = 'Merriweather';
   let fallbackFontFamily = 'Georgia';
@@ -77,7 +77,7 @@
 
 <style>
   :root {
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
   }
 
   main {
@@ -88,17 +88,17 @@
     margin: 0 auto;
     min-height: 100vh;
     box-sizing: border-box;
+    gap: 2rem;
+    justify-content: center;
   }
 
   .primary,
   .fallback {
-    flex: 1 0 auto;
-    padding: 10px;
-    max-width: 350px;
+    flex: 0 0 auto;
   }
 
   .comparison {
     flex: 3 0 auto;
-    padding: 10px;
+    max-width: 40rem;
   }
 </style>

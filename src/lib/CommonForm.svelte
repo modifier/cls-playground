@@ -5,9 +5,9 @@
 </script>
 <div class="cls-control">
   <label class="cls-control__label">Font Size</label>
-  <Range bind:value={value.fontSize} min={1} suffix="px" />
+  <Range bind:value={value.fontSize} min={1} initial={16} suffix="px" />
 </div>
 <div class="cls-control">
   <label class="cls-control__label">Font Weight</label>
-  <Range bind:value={value.fontWeight} max={900} min={200} step={100} />
+  <Range bind:value={value.fontWeight} max={900} min={100} step={100} initial={200} />
 </div>

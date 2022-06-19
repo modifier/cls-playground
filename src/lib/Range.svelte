@@ -1,9 +1,11 @@
 <script>
   import RepeatButton from './RepeatButton.svelte';
-  import { createEventDispatcher } from 'svelte';
+  import {createEventDispatcher} from 'svelte';
+  import ResetButton from './ResetButton.svelte';
 
   export let max = null;
   export let min = null;
+  export let initial = 0
   export let step = 1;
   export let value;
   export let suffix;
@@ -12,7 +14,7 @@
   function decrease() {
     value -= step;
     if (min !== null && value < min) {
-        value = min;
+      value = min;
     }
 
     dispatch('input');
@@ -27,12 +29,22 @@
   }
 
   function onChange() {
-    value = Math.max(Math.min(Math.round(value / step) * step, max), min);
+    value = Math.round(value / step) * step;
+    if (max !== null && value > max) {
+      value = max;
+    }
+    if (min !== null && value < min) {
+      value = min;
+    }
+  }
+
+  function reset() {
+    value = initial;
   }
 </script>
 
 <div class="range">
-  <RepeatButton perform={decrease} value="&minus;" type="left" />
+  <RepeatButton action={decrease} value="&minus;" />
   <input type="number"
          bind:value={value}
          min={min}
@@ -44,13 +56,14 @@
   {#if suffix}
     <span class="suffix">{suffix}</span>
   {/if}
-  <RepeatButton perform={increase} value="+" type="right" />
+  <RepeatButton action={increase} value="+" />
 </div>
+<ResetButton action={reset} />
 
 <style>
   .range {
     display: inline-flex;
-    width: 8rem;
+    width: 7.5rem;
     font-size: 1rem;
   }
 

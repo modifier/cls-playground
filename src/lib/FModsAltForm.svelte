@@ -7,7 +7,7 @@
     value = getOriginalValues(altValue);
   }
 
-  function getOriginalValues({ totalLineHeight, ascentHeight, lineGapOverride, sizeAdjust }) {
+  function getOriginalValues({ totalLineHeight, ascentHeight, lineGapOverride, ...rest }) {
     const ascentOverride = Math.round(ascentHeight - lineGapOverride / 2);
     const descentOverride = totalLineHeight - ascentOverride - lineGapOverride;
 
@@ -15,11 +15,11 @@
       ascentOverride,
       descentOverride,
       lineGapOverride,
-      sizeAdjust,
+      ...rest
     };
   }
 
-  function getAlternativeValues({ ascentOverride, descentOverride, lineGapOverride, sizeAdjust }) {
+  function getAlternativeValues({ ascentOverride, descentOverride, lineGapOverride, ...rest }) {
     const totalLineHeight = ascentOverride + descentOverride + lineGapOverride;
     const ascentHeight = Math.round(ascentOverride + lineGapOverride / 2);
 
@@ -27,7 +27,7 @@
       ascentHeight,
       totalLineHeight,
       lineGapOverride,
-      sizeAdjust,
+      ...rest
     };
   }
 </script>
@@ -42,8 +42,4 @@
 <div class="cls-control">
   <label class="cls-control__label">Line Gap Override</label>
   <Range bind:value={altValue.lineGapOverride} on:input={updateValue} min={0} suffix="%" />
-</div>
-<div class="cls-control">
-  <label class="cls-control__label">Size Adjust</label>
-  <Range bind:value={value.sizeAdjust} min={0} suffix="%" />
 </div>
