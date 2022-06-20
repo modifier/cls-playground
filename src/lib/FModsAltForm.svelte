@@ -79,7 +79,8 @@
   <Range bind:value={altValue.totalLineHeight}
          on:change={updateValue}
          min={minTotalHeight}
-         initial={null}
+         initial={0}
+         nullable={true}
          nonBlockingValidation={true}
          suffix="%"
          placeholder="normal" />
@@ -90,7 +91,8 @@
          on:change={updateValue}
          min={minAscentHeight}
          max={maxAscentHeight}
-         initial={null}
+         initial={0}
+         nullable={true}
          nonBlockingValidation={true}
          suffix="%"
          placeholder="normal" />
@@ -101,7 +103,8 @@
          on:change={updateValue}
          min={0}
          max={maxLineGap}
-         initial={null}
+         initial={0}
+         nullable={true}
          nonBlockingValidation={true}
          suffix="%"
          placeholder="normal" />

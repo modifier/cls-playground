@@ -23,6 +23,7 @@
          class:overlapped--fout={fout}
          style:font-size="{commonProps.fontSize}px"
          style:font-weight={commonProps.fontWeight}
+         style:line-height={commonProps.lineHeight}
     >
       <div class="primary" style:font-family={primaryFontFamily}>
         {text}

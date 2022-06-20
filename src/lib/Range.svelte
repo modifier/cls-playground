@@ -6,6 +6,7 @@
   export let max = null;
   export let min = null;
   export let initial = 0;
+  export let nullable = false;
   export let integer = false;
   export let placeholder = !integer ? initial : null;
   export let nonBlockingValidation = false;
@@ -35,6 +36,17 @@
     dispatch('change', value);
   }
 
+  function integerify() {
+    if (integer && value !== null) {
+      if (step < 1) {
+        const reverseStep = 1 / step;
+        value = (Math.round(value * reverseStep) / reverseStep);
+      } else {
+        value = +(Math.round(value / step) * step);
+      }
+    }
+  }
+
   function validate(providedValue = value, minValue = min, maxValue = max, isBlocking = !nonBlockingValidation) {
     validationError = false;
     if (maxValue !== null && providedValue !== null && providedValue > maxValue) {
@@ -51,18 +63,16 @@
         validationError = true;
       }
     }
+    integerify();
   }
 
   function onChange() {
-    if (integer) {
-      value = Math.round(value / step) * step;
-    }
     validate();
     dispatch('change', value);
   }
 
   function reset() {
-    value = initial;
+    value = nullable ? null : initial;
     validate();
     dispatch('change', value);
   }

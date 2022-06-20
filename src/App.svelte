@@ -14,6 +14,7 @@
   let commonProps = {
     fontSize: 16,
     fontWeight: 200,
+    lineHeight: null,
   };
   let primaryFontFamily = 'Merriweather';
   let fallbackFontFamily = 'Georgia';
@@ -97,8 +98,7 @@
          style:font-weight={commonProps.fontWeight}
          style:font-family={primaryFontFamily}>{PREVIEW_TEXT}</div>
     <div class="fallback-preview"
-         style:font-weight={commonProps.fontWeight}
-         style:font-family={fallbackFontFamily}>{PREVIEW_TEXT}</div>
+         style:font-weight={commonProps.fontWeight}>{PREVIEW_TEXT}</div>
   </div>
   <div class="comparison">
     <ComparisonToggle bind:mode={resultMode} />
@@ -147,6 +147,10 @@
   .primary-preview,
   .fallback-preview {
     font-size: 1.5rem;
+  }
+
+  .fallback-preview {
+    font-family: "fallback-font", sans-serif;
   }
 
   .comparison {

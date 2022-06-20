@@ -19,8 +19,8 @@
       <div class="glyph"
            style:font-size="{commonProps.fontSize}px"
            style:font-weight={commonProps.fontWeight}>
-        <div class="primary" style:font-family={primaryFontFamily}>{glyph}</div>
-        <div class="fallback">{glyph}</div>
+        <span class="primary" style:font-family={primaryFontFamily}>{glyph}</span>
+        <span class="fallback">{glyph}</span>
       </div>
     {/each}
   </div>
