@@ -90,7 +90,7 @@
          on:input
          on:change={onChange}
          placeholder={placeholder}
-         class="input cls-control__number" />
+         class="cls-control__number" />
   {#if suffix}
     <span class="suffix">{suffix}</span>
   {/if}
@@ -133,9 +133,12 @@
     color: red;
   }
 
-  .input::-webkit-outer-spin-button,
-  .input::-webkit-inner-spin-button {
+  .cls-control__number::-webkit-outer-spin-button,
+  .cls-control__number::-webkit-inner-spin-button {
     -webkit-appearance: none;
+  }
+
+  .cls-control__number {
     -moz-appearance: textfield;
   }
 </style>
