@@ -8,6 +8,7 @@
   import Result from './lib/Result.svelte';
   import ComparisonToggle from './lib/ComparisonToggle.svelte';
   import Alphabet from './lib/Alphabet.svelte';
+  import Info from './lib/Info.svelte';
 
   const PREVIEW_TEXT = 'The fox jumped over the lazy dog, the scoundrel.';
 
@@ -118,6 +119,7 @@
     <Result fontFace={fontFace}
             isValid={isResultValid(fallbackFontProps)}
             hidden={resultMode !== 'result'} />
+    <Info hidden={resultMode !== 'info'} />
   </div>
 </main>
 

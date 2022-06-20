@@ -12,6 +12,10 @@
   function showAlphabet() {
     mode = 'alphabet';
   }
+
+  function showInfo() {
+    mode = 'info';
+  }
 </script>
 
 <div class="comparison-toggle">
@@ -19,6 +23,7 @@
     <span on:click={showComparison} class="button" class:button--selected={mode === 'comparison'}>Comparison</span>
     <span on:click={showAlphabet} class="button" class:button--selected={mode === 'alphabet'}>Alphabet</span>
     <span on:click={showResult} class="button" class:button--selected={mode === 'result'}>Result</span>
+    <span on:click={showInfo} class="button" class:button--selected={mode === 'info'}>Info</span>
     <span class={['toggle-slider', `toggle-slider--${mode}`].join(' ')}></span>
   </div>
 </div>
@@ -31,6 +36,8 @@
   }
 
   .toggle-container {
+    --distance: 2rem;
+    --size: 6rem;
     width: fit-content;
     position: relative;
     display: flex;
@@ -41,19 +48,19 @@
     cursor: pointer;
     padding: 1rem 0.25rem;
     display: inline-block;
-    width: 6rem;
+    width: var(--size);
     font-weight: 500;
     box-sizing: border-box;
     text-align: center;
   }
 
   .button + .button {
-    margin-left: 2rem;
+    margin-left: var(--distance);
   }
 
   .toggle-slider {
     border-bottom: 2px #2a92c6 solid;
-    width: 6rem;
+    width: var(--size);
     display: block;
     position: absolute;
     bottom: 0;
@@ -62,11 +69,22 @@
   }
 
   .toggle-slider--alphabet {
-    left: 8rem;
+    left: calc(var(--distance) + var(--size));
   }
 
   .toggle-slider--result {
-    left: 16rem;
+    left: calc(2 * (var(--distance) + var(--size)));
+  }
+
+  .toggle-slider--info {
+    left: calc(3 * (var(--distance) + var(--size)));
+  }
+
+  @media screen and (max-width: 1000px) {
+    .toggle-container {
+      --distance: 1rem;
+      --size: 5rem;
+    }
   }
 
   .button--selected {
