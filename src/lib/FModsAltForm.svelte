@@ -73,6 +73,8 @@
       ...rest
     };
   }
+
+  $: altValue.sizeAdjust = value.sizeAdjust;
 </script>
 <div class="cls-control">
   <label class="cls-control__label">Total Line Height</label>

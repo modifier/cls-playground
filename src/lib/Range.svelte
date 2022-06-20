@@ -101,7 +101,7 @@
 <style>
   .range {
     display: inline-flex;
-    width: 7.5rem;
+    width: 8rem;
     font-size: 1rem;
   }
 
