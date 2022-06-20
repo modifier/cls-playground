@@ -33,6 +33,7 @@
   .toggle-container {
     width: fit-content;
     position: relative;
+    display: flex;
   }
 
   .button {

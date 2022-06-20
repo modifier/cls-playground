@@ -96,9 +96,13 @@
     </div>
     <div class="primary-preview"
          style:font-weight={commonProps.fontWeight}
-         style:font-family={primaryFontFamily}>{PREVIEW_TEXT}</div>
+         style:font-family={primaryFontFamily}>
+      <div class="preview">{PREVIEW_TEXT}</div>
+    </div>
     <div class="fallback-preview"
-         style:font-weight={commonProps.fontWeight}>{PREVIEW_TEXT}</div>
+         style:font-weight={commonProps.fontWeight}>
+      <div class="preview">{PREVIEW_TEXT}</div>
+    </div>
   </div>
   <div class="comparison">
     <ComparisonToggle bind:mode={resultMode} />
@@ -131,7 +135,8 @@
     gap: 2rem;
     justify-content: center;
     position: relative;
-    flex: 0 1 1300px;
+    flex: 0 1 81rem;
+    padding: 0 1rem;
   }
 
   .controls {
@@ -140,13 +145,33 @@
     top: 0;
     align-self: flex-start;
     display: grid;
-    grid-template-columns: 20rem 20rem;
+    grid-template-columns: 1fr 1fr;
     grid-column-gap: 2rem;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .controls {
+      grid-template-columns: 1fr;
+    }
+
+    .fallback-preview,
+    .primary-preview {
+      display: none;
+    }
   }
 
   .primary-preview,
   .fallback-preview {
     font-size: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 
   .fallback-preview {
@@ -155,7 +180,7 @@
 
   .comparison {
     flex: 3 1 auto;
-    max-width: 40rem;
+    max-width: 35rem;
     display: flex;
     flex-direction: column;
   }
