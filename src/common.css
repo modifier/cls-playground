@@ -6,6 +6,23 @@
   --monospace: "Inconsolata", "Inconsolata-fallback", monospace;
 }
 
+@font-face {
+  font-family: "Open Sans-fallback";
+  src: local(Arial);
+  ascent-override: 106.88%;
+  descent-override: 29.29%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Inconsolata-fallback";
+  src: local(Courier New);
+  ascent-override: 95.44%;
+  descent-override: 21.1%;
+  line-gap-override: 0%;
+  size-adjust: 90%;
+}
+
 html, body {
   min-height: 100vh;
 }
