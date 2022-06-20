@@ -1,20 +1,25 @@
 <script>
-  export let showComparison;
+  export let mode;
 
-  function doShowComparison() {
-    showComparison = true;
+  function showComparison() {
+    mode = 'comparison';
   }
 
-  function doShowResult() {
-    showComparison = false;
+  function showResult() {
+    mode = 'result';
+  }
+
+  function showAlphabet() {
+    mode = 'alphabet';
   }
 </script>
 
 <div class="comparison-toggle">
   <div class="toggle-container">
-    <span on:click={doShowComparison} class="button" class:button--selected={showComparison}>Comparison</span>
-    <span on:click={doShowResult} class="button" class:button--selected={!showComparison}>Result</span>
-    <span class="toggle-slider" class:toggle-slider--right={!showComparison}></span>
+    <span on:click={showComparison} class="button" class:button--selected={mode === 'comparison'}>Comparison</span>
+    <span on:click={showAlphabet} class="button" class:button--selected={mode === 'alphabet'}>Alphabet</span>
+    <span on:click={showResult} class="button" class:button--selected={mode === 'result'}>Result</span>
+    <span class={['toggle-slider', `toggle-slider--${mode}`].join(' ')}></span>
   </div>
 </div>
 
@@ -55,8 +60,12 @@
     transition: 0.3s left;
   }
 
-  .toggle-slider--right {
+  .toggle-slider--alphabet {
     left: 8rem;
+  }
+
+  .toggle-slider--result {
+    left: 16rem;
   }
 
   .button--selected {

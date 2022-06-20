@@ -7,6 +7,7 @@
   import FModsBothForm from './lib/FModsBothForm.svelte';
   import Result from './lib/Result.svelte';
   import ComparisonToggle from './lib/ComparisonToggle.svelte';
+  import Alphabet from './lib/Alphabet.svelte';
 
   const PREVIEW_TEXT = 'The fox jumped over the lazy dog, the scoundrel.';
 
@@ -27,7 +28,7 @@
     sizeAdjust: 100,
   };
   let fontFace;
-  let showComparison = true;
+  let resultMode = 'comparison';
 
   function isResultValid({ascentOverride, descentOverride, lineGapOverride}) {
     if (typeof ascentOverride === 'number' && ascentOverride < 0) {
@@ -100,15 +101,19 @@
          style:font-family={fallbackFontFamily}>{PREVIEW_TEXT}</div>
   </div>
   <div class="comparison">
-    <ComparisonToggle bind:showComparison={showComparison} />
+    <ComparisonToggle bind:mode={resultMode} />
     <Comparison
             commonProps={commonProps}
             fallbackSpacing={fallbackSpacing}
             primaryFontFamily={primaryFontFamily}
-            hidden={!showComparison} />
+            hidden={resultMode !== 'comparison'} />
+    <Alphabet
+            commonProps={commonProps}
+            primaryFontFamily={primaryFontFamily}
+            hidden={resultMode !== 'alphabet'} />
     <Result fontFace={fontFace}
             isValid={isResultValid(fallbackFontProps)}
-            hidden={showComparison} />
+            hidden={resultMode !== 'result'} />
   </div>
 </main>
 
