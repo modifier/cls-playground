@@ -3,49 +3,49 @@
   export let value;
   let altValue = getAlternativeValues(value);
   let minTotalHeight = 0;
-  let minAscentHeight = 0;
+  let minBaselineHeight = 0;
   let maxLineGap = null;
-  let maxAscentHeight = null;
+  let maxBaselineHeight = null;
   updateBorderValues();
 
   function updateValue({ detail }) {
     if (detail !== null) {
-      altValue.ascentHeight = altValue.ascentHeight || 0;
+      altValue.baselineHeight = altValue.baselineHeight || 0;
       altValue.totalLineHeight = altValue.totalLineHeight || 0;
       altValue.lineGapOverride = altValue.lineGapOverride || 0;
       updateBorderValues();
     } else {
-      altValue.ascentHeight = null;
+      altValue.baselineHeight = null;
       altValue.totalLineHeight = null;
       altValue.lineGapOverride = null;
       minTotalHeight = 0;
-      minAscentHeight = 0;
+      minBaselineHeight = 0;
       maxLineGap = null;
-      maxAscentHeight = null;
+      maxBaselineHeight = null;
     }
     value = getOriginalValues(altValue);
   }
 
   function updateBorderValues() {
-    minTotalHeight = altValue.ascentHeight + altValue.lineGapOverride / 2;
-    maxAscentHeight = altValue.totalLineHeight - altValue.lineGapOverride / 2;
+    minTotalHeight = altValue.baselineHeight + altValue.lineGapOverride / 2;
+    maxBaselineHeight = altValue.totalLineHeight - altValue.lineGapOverride / 2;
     maxLineGap = Math.min(
-      2 * (altValue.totalLineHeight - altValue.ascentHeight),
-      altValue.ascentHeight * 2
+      2 * (altValue.totalLineHeight - altValue.baselineHeight),
+      altValue.baselineHeight * 2
     );
 
-    minAscentHeight = altValue.lineGapOverride / 2;
+    minBaselineHeight = altValue.lineGapOverride / 2;
   }
 
   function getOriginalValues({
     totalLineHeight,
-    ascentHeight,
+                               baselineHeight,
     lineGapOverride,
     ...rest
   }) {
     if (
       totalLineHeight === null ||
-      ascentHeight === null ||
+            baselineHeight === null ||
       lineGapOverride === null
     ) {
       return {
@@ -55,7 +55,7 @@
         ...rest,
       };
     }
-    const ascentOverride = ascentHeight - lineGapOverride / 2;
+    const ascentOverride = baselineHeight - lineGapOverride / 2;
     const descentOverride = totalLineHeight - ascentOverride - lineGapOverride;
 
     return {
@@ -78,17 +78,17 @@
       lineGapOverride === null
     ) {
       return {
-        ascentHeight: null,
+        baselineHeight: null,
         totalLineHeight: null,
         lineGapOverride,
         ...rest,
       };
     }
     const totalLineHeight = ascentOverride + descentOverride + lineGapOverride;
-    const ascentHeight = ascentOverride + lineGapOverride / 2;
+    const baselineHeight = ascentOverride + lineGapOverride / 2;
 
     return {
-      ascentHeight,
+      baselineHeight,
       totalLineHeight,
       lineGapOverride,
       ...rest,
@@ -113,13 +113,13 @@
   />
 </div>
 <div class="cls-control">
-  <label class="cls-control__label" for="ascentHeight">Ascent Height</label>
+  <label class="cls-control__label" for="baselineHeight">Baseline Height</label>
   <Range
-    name="ascentHeight"
-    bind:value={altValue.ascentHeight}
+    name="baselineHeight"
+    bind:value={altValue.baselineHeight}
     on:change={updateValue}
-    min={minAscentHeight}
-    max={maxAscentHeight}
+    min={minBaselineHeight}
+    max={maxBaselineHeight}
     initial={0}
     nullable={true}
     nonBlockingValidation={true}
