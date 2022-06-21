@@ -1,5 +1,5 @@
 <script>
-  import Range from './Range.svelte';
+  import Range from '../lib/Range.svelte';
   export let value;
   let altValue = getAlternativeValues(value);
   let minTotalHeight = 0;

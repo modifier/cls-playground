@@ -1,7 +1,7 @@
 <script>
   import FModsForm from './FModsForm.svelte';
   import FModsAltForm from './FModsAltForm.svelte';
-  import Range from './Range.svelte';
+  import Range from '../lib/Range.svelte';
 
   let alternativeMode = false;
   export let value;

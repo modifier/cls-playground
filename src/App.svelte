@@ -1,14 +1,14 @@
 <script>
-  import SpacingForm from './lib/SpacingForm.svelte';
-  import PrimaryFontSelector from './lib/PrimaryFontSelector.svelte';
-  import FallbackFontSelector from './lib/FallbackFontSelector.svelte';
-  import CommonForm from './lib/CommonForm.svelte';
-  import Comparison from './lib/Comparison.svelte';
-  import FModsBothForm from './lib/FModsBothForm.svelte';
-  import Result from './lib/Result.svelte';
-  import ComparisonToggle from './lib/ComparisonToggle.svelte';
-  import Alphabet from './lib/Alphabet.svelte';
-  import Info from './lib/Info.svelte';
+  import SpacingForm from './components/forms/SpacingForm.svelte';
+  import PrimaryFontSelector from './components/font-selector/PrimaryFontSelector.svelte';
+  import FallbackFontSelector from './components/font-selector/FallbackFontSelector.svelte';
+  import CommonForm from './components/forms/CommonForm.svelte';
+  import Comparison from './components/output/Comparison.svelte';
+  import FModsBothForm from './components/forms/FModsBothForm.svelte';
+  import Result from './components/output/Result.svelte';
+  import ComparisonToggle from './components/output/ComparisonToggle.svelte';
+  import Alphabet from './components/output/Alphabet.svelte';
+  import Info from './components/output/Info.svelte';
 
   const PREVIEW_TEXT = 'The fox jumped over the lazy dog, the scoundrel.';
 

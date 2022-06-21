@@ -1,5 +1,5 @@
 <script>
-  import FontUpload from './FontUpload.svelte';
+  import FontUpload from '../lib/FontUpload.svelte';
   import ToggleFontMode from './ToggleFontMode.svelte';
 
   const KEY = 'AIzaSyC6-Vr6LLjHcH_edpIXpJn6CZXUlSmhIvg';
