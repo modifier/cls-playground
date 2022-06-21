@@ -4,6 +4,11 @@
 :root {
   --sans-serif: "Open Sans", "Open Sans-fallback", sans-serif;
   --monospace: "Inconsolata", "Inconsolata-fallback", monospace;
+  --primary-color: #50b9de;
+  --link-color: #2a92c6;
+  --border-color: #d9d9d9;
+  --border-size: calc(1rem / 16);
+  font-size: 16px;
 }
 
 @font-face {
@@ -36,7 +41,7 @@ body {
 }
 
 a, a:visited {
-  color: #2a92c6;
+  color: var(--link-color);
   font-weight: 400;
 }
 
@@ -101,7 +106,7 @@ a, a:visited {
 .cls-control__text {
   border: 0;
   width: 100%;
-  border-bottom: 1px #9e9e9e solid;
+  border-bottom: 1px var(--border-color) solid;
   font-size: 1.25rem;
   padding: 0.15rem 0.25rem;
   margin-bottom: 0.3rem;

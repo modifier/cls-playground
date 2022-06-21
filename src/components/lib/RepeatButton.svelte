@@ -36,11 +36,10 @@
 
 <style>
   .button {
-    --color: #50b9de;
     color: white;
     flex: 0 0 auto;
-    background-color: var(--color);
-    border: 1px var(--color) solid;
+    background-color: var(--primary-color);
+    border: var(--border-size) var(--primary-color) solid;
     font-size: 1rem;
     cursor: pointer;
   }

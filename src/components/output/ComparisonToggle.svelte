@@ -32,7 +32,7 @@
   .comparison-toggle {
     font-size: 0;
     margin-bottom: 1rem;
-    border-bottom: 1px #d9d9d9 solid;
+    border-bottom: var(--border-size) var(--border-color) solid;
   }
 
   .toggle-container {
@@ -59,11 +59,11 @@
   }
 
   .toggle-slider {
-    border-bottom: 2px #2a92c6 solid;
+    border-bottom: calc(2 * var(--border-size)) var(--primary-color) solid;
     width: var(--size);
     display: block;
     position: absolute;
-    bottom: 0;
+    bottom: calc(-1 * var(--border-size));
     left: 0;
     transition: 0.3s left;
   }
@@ -80,7 +80,7 @@
     left: calc(3 * (var(--distance) + var(--size)));
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 62rem) {
     .toggle-container {
       --distance: 1rem;
       --size: 5rem;
@@ -90,6 +90,6 @@
   .button--selected {
     text-decoration: none;
     cursor: default;
-    color: #2a92c6;
+    color: var(--link-color);
   }
 </style>

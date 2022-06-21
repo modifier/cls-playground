@@ -131,7 +131,7 @@
   .cls-main {
     display: flex;
     flex-direction: row;
-    max-width: 1300px;
+    max-width: 81rem;
     margin: 0 auto;
     box-sizing: border-box;
     gap: 2rem;
@@ -151,7 +151,7 @@
     grid-column-gap: 2rem;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 62rem) {
     .controls {
       grid-template-columns: 1fr;
     }

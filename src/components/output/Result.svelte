@@ -31,7 +31,7 @@
   code {
     background-color: #fffcf2;
     padding: 1rem;
-    border: 1px #d7bd65 solid;
+    border: var(--border-size) #d7bd65 solid;
     transition: 0.5s all;
   }
 

@@ -30,7 +30,7 @@
 
   .link {
     font-size: 0.9rem;
-    color: #2a92c6;
+    color: var(--link-color);
     text-decoration: underline;
     cursor: pointer;
   }
