@@ -5,32 +5,40 @@
   export let hidden;
   let differentColor = true;
   let fout = false;
-  let text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+  let text =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 </script>
 
-<div class="comparison" class:hidden={hidden}>
+<div class="comparison" class:hidden>
   <label class="cls-control">
     <input type="checkbox" bind:checked={fout} class="cls-control__checkbox" />
     <span>See layout shift due to FOUC</span>
   </label>
   <label class="cls-control">
-    <input type="checkbox" bind:checked={differentColor} class="cls-control__checkbox" />
+    <input
+      type="checkbox"
+      bind:checked={differentColor}
+      class="cls-control__checkbox"
+    />
     <span>Use different colours for each font</span>
   </label>
   <div class="overlapped-container">
-    <div class="overlapped"
-         class:overlapped--different-color={differentColor}
-         class:overlapped--fout={fout}
-         style:font-size="{commonProps.fontSize}px"
-         style:font-weight={commonProps.fontWeight}
-         style:line-height={commonProps.lineHeight}
+    <div
+      class="overlapped"
+      class:overlapped--different-color={differentColor}
+      class:overlapped--fout={fout}
+      style:font-size="{commonProps.fontSize}px"
+      style:font-weight={commonProps.fontWeight}
+      style:line-height={commonProps.lineHeight}
     >
       <div class="primary" style:font-family={primaryFontFamily}>
         {text}
       </div>
-      <div class="fallback"
-           style:letter-spacing="{fallbackSpacing.letterSpacing / 64}em"
-           style:word-spacing="{fallbackSpacing.wordSpacing / 64}em">
+      <div
+        class="fallback"
+        style:letter-spacing="{fallbackSpacing.letterSpacing / 64}em"
+        style:word-spacing="{fallbackSpacing.wordSpacing / 64}em"
+      >
         {text}
       </div>
     </div>
@@ -39,11 +47,13 @@
 
 <style>
   @keyframes flicker {
-    0%, 100% {
+    0%,
+    100% {
       visibility: visible;
     }
 
-    25%, 75% {
+    25%,
+    75% {
       visibility: hidden;
     }
   }

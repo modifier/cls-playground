@@ -1,5 +1,5 @@
 <script>
-  import Range from '../lib/Range.svelte';
+  import Range from "../lib/Range.svelte";
   export let value;
   let altValue = getAlternativeValues(value);
   let minTotalHeight = 0;
@@ -29,18 +29,30 @@
   function updateBorderValues() {
     minTotalHeight = altValue.ascentHeight + altValue.lineGapOverride / 2;
     maxAscentHeight = altValue.totalLineHeight - altValue.lineGapOverride / 2;
-    maxLineGap = Math.min(2 * (altValue.totalLineHeight - altValue.ascentHeight), altValue.ascentHeight * 2);
+    maxLineGap = Math.min(
+      2 * (altValue.totalLineHeight - altValue.ascentHeight),
+      altValue.ascentHeight * 2
+    );
 
     minAscentHeight = altValue.lineGapOverride / 2;
   }
 
-  function getOriginalValues({ totalLineHeight, ascentHeight, lineGapOverride, ...rest }) {
-    if (totalLineHeight === null || ascentHeight === null || lineGapOverride === null) {
+  function getOriginalValues({
+    totalLineHeight,
+    ascentHeight,
+    lineGapOverride,
+    ...rest
+  }) {
+    if (
+      totalLineHeight === null ||
+      ascentHeight === null ||
+      lineGapOverride === null
+    ) {
       return {
         ascentOverride: null,
         descentOverride: null,
         lineGapOverride: null,
-        ...rest
+        ...rest,
       };
     }
     const ascentOverride = ascentHeight - lineGapOverride / 2;
@@ -50,17 +62,26 @@
       ascentOverride,
       descentOverride,
       lineGapOverride,
-      ...rest
+      ...rest,
     };
   }
 
-  function getAlternativeValues({ ascentOverride, descentOverride, lineGapOverride, ...rest }) {
-    if (ascentOverride === null && descentOverride === null && lineGapOverride === null) {
+  function getAlternativeValues({
+    ascentOverride,
+    descentOverride,
+    lineGapOverride,
+    ...rest
+  }) {
+    if (
+      ascentOverride === null &&
+      descentOverride === null &&
+      lineGapOverride === null
+    ) {
       return {
         ascentHeight: null,
         totalLineHeight: null,
         lineGapOverride,
-        ...rest
+        ...rest,
       };
     }
     const totalLineHeight = ascentOverride + descentOverride + lineGapOverride;
@@ -70,44 +91,51 @@
       ascentHeight,
       totalLineHeight,
       lineGapOverride,
-      ...rest
+      ...rest,
     };
   }
 
   $: altValue.sizeAdjust = value.sizeAdjust;
 </script>
+
 <div class="cls-control">
   <label class="cls-control__label">Total Line Height</label>
-  <Range bind:value={altValue.totalLineHeight}
-         on:change={updateValue}
-         min={minTotalHeight}
-         initial={0}
-         nullable={true}
-         nonBlockingValidation={true}
-         suffix="%"
-         placeholder="normal" />
+  <Range
+    bind:value={altValue.totalLineHeight}
+    on:change={updateValue}
+    min={minTotalHeight}
+    initial={0}
+    nullable={true}
+    nonBlockingValidation={true}
+    suffix="%"
+    placeholder="normal"
+  />
 </div>
 <div class="cls-control">
   <label class="cls-control__label">Ascent Height</label>
-  <Range bind:value={altValue.ascentHeight}
-         on:change={updateValue}
-         min={minAscentHeight}
-         max={maxAscentHeight}
-         initial={0}
-         nullable={true}
-         nonBlockingValidation={true}
-         suffix="%"
-         placeholder="normal" />
+  <Range
+    bind:value={altValue.ascentHeight}
+    on:change={updateValue}
+    min={minAscentHeight}
+    max={maxAscentHeight}
+    initial={0}
+    nullable={true}
+    nonBlockingValidation={true}
+    suffix="%"
+    placeholder="normal"
+  />
 </div>
 <div class="cls-control">
   <label class="cls-control__label">Line Gap Override</label>
-  <Range bind:value={altValue.lineGapOverride}
-         on:change={updateValue}
-         min={0}
-         max={maxLineGap}
-         initial={0}
-         nullable={true}
-         nonBlockingValidation={true}
-         suffix="%"
-         placeholder="normal" />
+  <Range
+    bind:value={altValue.lineGapOverride}
+    on:change={updateValue}
+    min={0}
+    max={maxLineGap}
+    initial={0}
+    nullable={true}
+    nonBlockingValidation={true}
+    suffix="%"
+    placeholder="normal"
+  />
 </div>

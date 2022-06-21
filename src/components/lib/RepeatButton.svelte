@@ -27,12 +27,14 @@
   }
 </script>
 
-<input type="button"
-       value={value}
-       on:mousedown={start}
-       on:mouseup={stop}
-       on:mouseout={stop}
-       class="cls-control__button button" />
+<input
+  type="button"
+  {value}
+  on:mousedown={start}
+  on:mouseup={stop}
+  on:mouseout={stop}
+  class="cls-control__button button"
+/>
 
 <style>
   .button {

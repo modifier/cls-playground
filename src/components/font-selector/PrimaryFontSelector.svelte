@@ -1,8 +1,8 @@
 <script>
-  import FontUpload from '../lib/FontUpload.svelte';
-  import ToggleFontMode from './ToggleFontMode.svelte';
+  import FontUpload from "../lib/FontUpload.svelte";
+  import ToggleFontMode from "./ToggleFontMode.svelte";
 
-  const KEY = 'AIzaSyC6-Vr6LLjHcH_edpIXpJn6CZXUlSmhIvg';
+  const KEY = "AIzaSyC6-Vr6LLjHcH_edpIXpJn6CZXUlSmhIvg";
 
   export let value;
   let googleFontValue = value;
@@ -14,7 +14,7 @@
   function getGoogleFonts() {
     const request = new XMLHttpRequest();
     let url = `https://www.googleapis.com/webfonts/v1/webfonts?key=${KEY}`;
-    request.open('GET', url, true);
+    request.open("GET", url, true);
     request.onreadystatechange = function () {
       if (request.readyState === 4 && request.status === 200) {
         const data = JSON.parse(request.responseText);
@@ -24,15 +24,16 @@
     request.send();
   }
 
-  function onFileUploaded({detail: {source, fileName}}) {
+  function onFileUploaded({ detail: { source, fileName } }) {
     uploadedFontValue = fileName;
     uploadedFileSource = source;
-    value = 'webfont-uploaded';
+    value = "webfont-uploaded";
   }
 
   getGoogleFonts();
 
-  $: value = !useGoogleFonts && uploadedFontValue ? 'webfont-uploaded' : googleFontValue;
+  $: value =
+    !useGoogleFonts && uploadedFontValue ? "webfont-uploaded" : googleFontValue;
 </script>
 
 <svelte:head>
@@ -47,32 +48,37 @@
     </style>
     `}
   {:else}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={googleFontValue.trim()}:300,300i,400,400i,700,700i,900,900i" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family={googleFontValue.trim()}:300,300i,400,400i,700,700i,900,900i"
+    />
   {/if}
 </svelte:head>
 
 <div class="cls-control cls-control--column">
   <label for="primary-font-family" class="cls-control__text-label">
     Primary font
-    <ToggleFontMode bind:useGoogleFonts={useGoogleFonts} />
+    <ToggleFontMode bind:useGoogleFonts />
   </label>
-{#if useGoogleFonts}
-    <input bind:value={googleFontValue}
-           placeholder="Font name"
-           list="families"
-           class="cls-control__text"
-           name="primary-font-family" />
+  {#if useGoogleFonts}
+    <input
+      bind:value={googleFontValue}
+      placeholder="Font name"
+      list="families"
+      class="cls-control__text"
+      name="primary-font-family"
+    />
     <datalist id="families">
       {#each families as family}
-        <option value={family.family} />
+        <option value={family.family}></option>
       {/each}
     </datalist>
-{:else}
-  {#if uploadedFontValue}
-    <span class="cls-control__text">
-      {uploadedFontValue}
-    </span>
+  {:else}
+    {#if uploadedFontValue}
+      <span class="cls-control__text">
+        {uploadedFontValue}
+      </span>
+    {/if}
+    <FontUpload on:upload={onFileUploaded} />
   {/if}
-  <FontUpload on:upload={onFileUploaded} />
-{/if}
 </div>

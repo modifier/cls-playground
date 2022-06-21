@@ -4,22 +4,32 @@
   export let primaryFontFamily;
   let differentColor = true;
 
-  const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
-  const GLYPHS = [...ALPHABET.split(''), ...ALPHABET.toLocaleUpperCase().split('')];
+  const ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+  const GLYPHS = [
+    ...ALPHABET.split(""),
+    ...ALPHABET.toLocaleUpperCase().split(""),
+  ];
 </script>
 
-<div class="alphabet-container" class:hidden={hidden}>
+<div class="alphabet-container" class:hidden>
   <label class="cls-control">
-    <input type="checkbox" bind:checked={differentColor} class="cls-control__checkbox" />
+    <input
+      type="checkbox"
+      bind:checked={differentColor}
+      class="cls-control__checkbox"
+    />
     <span>Use different colours for each font</span>
   </label>
-  <div class="alphabet"
-       class:alphabet--different-color={differentColor}>
+  <div class="alphabet" class:alphabet--different-color={differentColor}>
     {#each GLYPHS as glyph}
-      <div class="glyph"
-           style:font-size="{commonProps.fontSize}px"
-           style:font-weight={commonProps.fontWeight}>
-        <span class="primary" style:font-family={primaryFontFamily}>{glyph}</span>
+      <div
+        class="glyph"
+        style:font-size="{commonProps.fontSize}px"
+        style:font-weight={commonProps.fontWeight}
+      >
+        <span class="primary" style:font-family={primaryFontFamily}
+          >{glyph}</span
+        >
         <span class="fallback">{glyph}</span>
       </div>
     {/each}

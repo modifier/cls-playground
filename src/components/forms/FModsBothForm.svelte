@@ -1,20 +1,24 @@
 <script>
-  import FModsForm from './FModsForm.svelte';
-  import FModsAltForm from './FModsAltForm.svelte';
-  import Range from '../lib/Range.svelte';
+  import FModsForm from "./FModsForm.svelte";
+  import FModsAltForm from "./FModsAltForm.svelte";
+  import Range from "../lib/Range.svelte";
 
   let alternativeMode = false;
   export let value;
 </script>
 
 <label class="cls-control alternative-mode">
-  <input type="checkbox" bind:checked={alternativeMode} class="cls-control__checkbox" />
+  <input
+    type="checkbox"
+    bind:checked={alternativeMode}
+    class="cls-control__checkbox"
+  />
   <span class="cls-control__checkbox-label">Use alternative mode</span>
 </label>
 {#if alternativeMode}
-  <FModsAltForm bind:value={value} />
+  <FModsAltForm bind:value />
 {:else}
-  <FModsForm bind:value={value} />
+  <FModsForm bind:value />
 {/if}
 <div class="cls-control">
   <label class="cls-control__label">Size Adjust</label>

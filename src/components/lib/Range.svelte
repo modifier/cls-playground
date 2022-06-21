@@ -1,7 +1,7 @@
 <script>
-  import RepeatButton from './RepeatButton.svelte';
-  import { createEventDispatcher } from 'svelte';
-  import ResetButton from './ResetButton.svelte';
+  import RepeatButton from "./RepeatButton.svelte";
+  import { createEventDispatcher } from "svelte";
+  import ResetButton from "./ResetButton.svelte";
 
   export let max = null;
   export let min = null;
@@ -24,7 +24,7 @@
     value -= step;
     validate();
 
-    dispatch('change', value);
+    dispatch("change", value);
   }
 
   function increase() {
@@ -33,30 +33,43 @@
     }
     value += step;
     validate();
-    dispatch('change', value);
+    dispatch("change", value);
   }
 
   function integerify() {
     if (integer && value !== null) {
       if (step < 1) {
         const reverseStep = 1 / step;
-        value = (Math.round(value * reverseStep) / reverseStep);
+        value = Math.round(value * reverseStep) / reverseStep;
       } else {
         value = +(Math.round(value / step) * step);
       }
     }
   }
 
-  function validate(providedValue = value, minValue = min, maxValue = max, isBlocking = !nonBlockingValidation) {
+  function validate(
+    providedValue = value,
+    minValue = min,
+    maxValue = max,
+    isBlocking = !nonBlockingValidation
+  ) {
     validationError = false;
-    if (maxValue !== null && providedValue !== null && providedValue > maxValue) {
+    if (
+      maxValue !== null &&
+      providedValue !== null &&
+      providedValue > maxValue
+    ) {
       if (isBlocking) {
         value = max;
       } else {
         validationError = true;
       }
     }
-    if (minValue !== null && providedValue !== null && providedValue < minValue) {
+    if (
+      minValue !== null &&
+      providedValue !== null &&
+      providedValue < minValue
+    ) {
       if (isBlocking) {
         value = minValue;
       } else {
@@ -68,29 +81,33 @@
 
   function onChange() {
     validate();
-    dispatch('change', value);
+    dispatch("change", value);
   }
 
   function reset() {
     value = nullable ? null : initial;
     validate();
-    dispatch('change', value);
+    dispatch("change", value);
   }
 </script>
 
-<div class="range"
-     class:range--invalid={validationError}
-     class:range--placeholder={value === null && initial === null}>
+<div
+  class="range"
+  class:range--invalid={validationError}
+  class:range--placeholder={value === null && initial === null}
+>
   <RepeatButton action={decrease} value="&minus;" />
-  <input type="number"
-         bind:value={value}
-         min={min}
-         max={max}
-         step={step}
-         on:input
-         on:change={onChange}
-         placeholder={placeholder}
-         class="cls-control__number" />
+  <input
+    type="number"
+    bind:value
+    {min}
+    {max}
+    {step}
+    on:input
+    on:change={onChange}
+    {placeholder}
+    class="cls-control__number"
+  />
   {#if suffix}
     <span class="suffix">{suffix}</span>
   {/if}

@@ -2,30 +2,54 @@
   export let mode;
 
   function showComparison() {
-    mode = 'comparison';
+    mode = "comparison";
   }
 
   function showResult() {
-    mode = 'result';
+    mode = "result";
   }
 
   function showAlphabet() {
-    mode = 'alphabet';
+    mode = "alphabet";
   }
 
   function showInfo() {
-    mode = 'info';
+    mode = "info";
   }
 </script>
 
 <nav class="output-tabs">
   <ul class="tabs-container">
-    <li on:click={showComparison} class="tab-button" class:button--selected={mode === 'comparison'}>Comparison</li>
-    <li on:click={showAlphabet} class="tab-button" class:button--selected={mode === 'alphabet'}>Alphabet</li>
-    <li on:click={showResult} class="tab-button" class:button--selected={mode === 'result'}>Result</li>
-    <li on:click={showInfo} class="tab-button" class:button--selected={mode === 'info'}>Info</li>
+    <li
+      on:click={showComparison}
+      class="tab-button"
+      class:button--selected={mode === "comparison"}
+    >
+      Comparison
+    </li>
+    <li
+      on:click={showAlphabet}
+      class="tab-button"
+      class:button--selected={mode === "alphabet"}
+    >
+      Alphabet
+    </li>
+    <li
+      on:click={showResult}
+      class="tab-button"
+      class:button--selected={mode === "result"}
+    >
+      Result
+    </li>
+    <li
+      on:click={showInfo}
+      class="tab-button"
+      class:button--selected={mode === "info"}
+    >
+      Info
+    </li>
   </ul>
-  <span class={`tabs-slider tabs-slider--${mode}`}></span>
+  <span class={`tabs-slider tabs-slider--${mode}`} />
 </nav>
 
 <style>

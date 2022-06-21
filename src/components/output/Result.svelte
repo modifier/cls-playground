@@ -4,8 +4,10 @@
   export let isValid;
 </script>
 
-<code class="result" class:hidden={hidden} class:invalid={!isValid}>
-  <div class="invalid-message">The resulting code is invalid. Check your font's parameters.</div>
+<code class="result" class:hidden class:invalid={!isValid}>
+  <span class="invalid-message">
+    The resulting code is invalid. Check your font's parameters.
+  </span>
   <pre>@font-face &lbrace;
 {fontFace}
 &rbrace;</pre>

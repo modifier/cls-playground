@@ -12,9 +12,13 @@
 
 <span class="toggle-font-mode">
   <span class="separator">(</span>
-  <span on:click={useGoogle} class="link" class:link--selected={useGoogleFonts}>Google Fonts</span>
+  <span on:click={useGoogle} class="link" class:link--selected={useGoogleFonts}
+    >Google Fonts</span
+  >
   <span class="separator">|</span>
-  <span on:click={useFile} class="link" class:link--selected={!useGoogleFonts}>File</span>
+  <span on:click={useFile} class="link" class:link--selected={!useGoogleFonts}
+    >File</span
+  >
   <span class="separator">)</span>
 </span>
 

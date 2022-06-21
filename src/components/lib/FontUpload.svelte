@@ -1,5 +1,5 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from "svelte";
   let source;
   let fileName;
   let fileInput;
@@ -29,7 +29,7 @@
     currentObjectURL = URL.createObjectURL(file);
     source = JSON.stringify(currentObjectURL);
 
-    dispatch('upload', { source, fileName });
+    dispatch("upload", { source, fileName });
   }
 </script>
 
@@ -39,7 +39,13 @@
   </svg>
   Upload font
 </button>
-<input type="file" accept=".ttf,.otf,.woff,.woff2,.svg" bind:this={fileInput} on:change={doUpload} class="cls-control__hidden" />
+<input
+  type="file"
+  accept=".ttf,.otf,.woff,.woff2,.svg"
+  bind:this={fileInput}
+  on:change={doUpload}
+  class="cls-control__hidden"
+/>
 
 <style>
   .upload-button {

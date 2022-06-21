@@ -1,7 +1,8 @@
 <script>
-  import Range from '../lib/Range.svelte';
+  import Range from "../lib/Range.svelte";
   export let value;
 </script>
+
 <div class="cls-control">
   <label class="cls-control__label">Letter Spacing</label>
   <Range bind:value={value.letterSpacing} step={1} suffix="u" />

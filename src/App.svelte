@@ -1,24 +1,24 @@
 <script>
-  import SpacingForm from './components/forms/SpacingForm.svelte';
-  import PrimaryFontSelector from './components/font-selector/PrimaryFontSelector.svelte';
-  import FallbackFontSelector from './components/font-selector/FallbackFontSelector.svelte';
-  import CommonForm from './components/forms/CommonForm.svelte';
-  import Comparison from './components/output/Comparison.svelte';
-  import FModsBothForm from './components/forms/FModsBothForm.svelte';
-  import Result from './components/output/Result.svelte';
-  import ComparisonToggle from './components/output/OutputTabs.svelte';
-  import Alphabet from './components/output/Alphabet.svelte';
-  import Info from './components/output/Info.svelte';
+  import SpacingForm from "./components/forms/SpacingForm.svelte";
+  import PrimaryFontSelector from "./components/font-selector/PrimaryFontSelector.svelte";
+  import FallbackFontSelector from "./components/font-selector/FallbackFontSelector.svelte";
+  import CommonForm from "./components/forms/CommonForm.svelte";
+  import Comparison from "./components/output/Comparison.svelte";
+  import FModsBothForm from "./components/forms/FModsBothForm.svelte";
+  import Result from "./components/output/Result.svelte";
+  import ComparisonToggle from "./components/output/OutputTabs.svelte";
+  import Alphabet from "./components/output/Alphabet.svelte";
+  import Info from "./components/output/Info.svelte";
 
-  const PREVIEW_TEXT = 'The fox jumped over the lazy dog, the scoundrel.';
+  const PREVIEW_TEXT = "The fox jumped over the lazy dog, the scoundrel.";
 
   let commonProps = {
     fontSize: 16,
     fontWeight: 200,
     lineHeight: null,
   };
-  let primaryFontFamily = 'Merriweather';
-  let fallbackFontFamily = 'Georgia';
+  let primaryFontFamily = "Merriweather";
+  let fallbackFontFamily = "Georgia";
   let fallbackSpacing = {
     letterSpacing: 0,
     wordSpacing: 0,
@@ -30,46 +30,49 @@
     sizeAdjust: 100,
   };
   let fontFace;
-  let resultMode = 'comparison';
+  let resultMode = "comparison";
 
-  function isResultValid({ascentOverride, descentOverride, lineGapOverride}) {
-    if (typeof ascentOverride === 'number' && ascentOverride < 0) {
+  function isResultValid({ ascentOverride, descentOverride, lineGapOverride }) {
+    if (typeof ascentOverride === "number" && ascentOverride < 0) {
       return false;
     }
-    if (typeof descentOverride === 'number' && descentOverride < 0) {
+    if (typeof descentOverride === "number" && descentOverride < 0) {
       return false;
     }
-    if (typeof lineGapOverride === 'number' && lineGapOverride < 0) {
+    if (typeof lineGapOverride === "number" && lineGapOverride < 0) {
       return false;
     }
     return true;
   }
 
-  function getFontFace(fontFamily, {ascentOverride, descentOverride, lineGapOverride, sizeAdjust}) {
+  function getFontFace(
+    fontFamily,
+    { ascentOverride, descentOverride, lineGapOverride, sizeAdjust }
+  ) {
     const params = {
-      'font-family': 'fallback-font',
-      src: `local(${fontFamily})`
+      "font-family": "fallback-font",
+      src: `local(${fontFamily})`,
     };
 
-    if (typeof ascentOverride === 'number') {
-      params['ascent-override'] = `${ascentOverride}%`;
+    if (typeof ascentOverride === "number") {
+      params["ascent-override"] = `${ascentOverride}%`;
     }
 
-    if (typeof descentOverride === 'number') {
-      params['descent-override'] = `${descentOverride}%`;
+    if (typeof descentOverride === "number") {
+      params["descent-override"] = `${descentOverride}%`;
     }
 
-    if (typeof lineGapOverride === 'number') {
-      params['line-gap-override'] = `${lineGapOverride}%`;
+    if (typeof lineGapOverride === "number") {
+      params["line-gap-override"] = `${lineGapOverride}%`;
     }
 
     if (sizeAdjust !== 100) {
-      params['size-adjust'] = `${sizeAdjust}%`;
+      params["size-adjust"] = `${sizeAdjust}%`;
     }
 
     return Object.entries(params)
-            .map(([key, value]) => `  ${key}: ${value};`)
-            .join('\n');
+      .map(([key, value]) => `  ${key}: ${value};`)
+      .join("\n");
   }
 
   $: fontFace = getFontFace(fallbackFontFamily, fallbackFontProps);
@@ -80,8 +83,7 @@
   <style>
     @font-face {
       ${fontFace}
-    }
-  </style>`}
+    }</style>`}
 </svelte:head>
 
 <main class="cls-main">
@@ -95,31 +97,36 @@
       <SpacingForm bind:value={fallbackSpacing} />
       <FModsBothForm bind:value={fallbackFontProps} />
     </div>
-    <div class="primary-preview"
-         style:font-weight={commonProps.fontWeight}
-         style:font-family={primaryFontFamily}>
+    <div
+      class="primary-preview"
+      style:font-weight={commonProps.fontWeight}
+      style:font-family={primaryFontFamily}
+    >
       <div class="preview">{PREVIEW_TEXT}</div>
     </div>
-    <div class="fallback-preview"
-         style:font-weight={commonProps.fontWeight}>
+    <div class="fallback-preview" style:font-weight={commonProps.fontWeight}>
       <div class="preview">{PREVIEW_TEXT}</div>
     </div>
   </section>
   <section class="comparison">
     <ComparisonToggle bind:mode={resultMode} />
     <Comparison
-            commonProps={commonProps}
-            fallbackSpacing={fallbackSpacing}
-            primaryFontFamily={primaryFontFamily}
-            hidden={resultMode !== 'comparison'} />
+      {commonProps}
+      {fallbackSpacing}
+      {primaryFontFamily}
+      hidden={resultMode !== "comparison"}
+    />
     <Alphabet
-            commonProps={commonProps}
-            primaryFontFamily={primaryFontFamily}
-            hidden={resultMode !== 'alphabet'} />
-    <Result fontFace={fontFace}
-            isValid={isResultValid(fallbackFontProps)}
-            hidden={resultMode !== 'result'} />
-    <Info hidden={resultMode !== 'info'} />
+      {commonProps}
+      {primaryFontFamily}
+      hidden={resultMode !== "alphabet"}
+    />
+    <Result
+      {fontFace}
+      isValid={isResultValid(fallbackFontProps)}
+      hidden={resultMode !== "result"}
+    />
+    <Info hidden={resultMode !== "info"} />
   </section>
 </main>
 

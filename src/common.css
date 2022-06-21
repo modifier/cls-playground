@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap");
 
 @font-face {
   font-family: "Open Sans-fallback";
@@ -28,7 +28,8 @@
   font-size: 16px;
 }
 
-html, body {
+html,
+body {
   min-height: 100vh;
 }
 
@@ -36,14 +37,15 @@ body {
   margin: 0;
 }
 
-a, a:visited {
+a,
+a:visited {
   color: var(--link-color);
   font-weight: 400;
 }
 
 pre {
   margin: 0;
-  font-family: 'Inconsolata', 'inconsolata-fallback', monospace;
+  font-family: "Inconsolata", "inconsolata-fallback", monospace;
   font-weight: 400;
 }
 
