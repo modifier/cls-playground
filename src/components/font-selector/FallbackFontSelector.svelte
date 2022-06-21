@@ -9,7 +9,7 @@
     'Times New Roman',
     'Trebuchet MS',
     'Verdana',
-  ]
+  ];
 </script>
 
 <div class="cls-control cls-control--column">
@@ -21,7 +21,7 @@
          list="safe-fonts" />
   <datalist id="safe-fonts">
     {#each SAFE_FONTS as family}
-      <option value={family} />
+      <option value={family}></option>
     {/each}
   </datalist>
 </div>

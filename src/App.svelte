@@ -6,7 +6,7 @@
   import Comparison from './components/output/Comparison.svelte';
   import FModsBothForm from './components/forms/FModsBothForm.svelte';
   import Result from './components/output/Result.svelte';
-  import ComparisonToggle from './components/output/ComparisonToggle.svelte';
+  import ComparisonToggle from './components/output/OutputTabs.svelte';
   import Alphabet from './components/output/Alphabet.svelte';
   import Info from './components/output/Info.svelte';
 
@@ -85,7 +85,7 @@
 </svelte:head>
 
 <main class="cls-main">
-  <div class="controls">
+  <section class="controls">
     <div class="primary">
       <PrimaryFontSelector bind:value={primaryFontFamily} />
       <CommonForm bind:value={commonProps} />
@@ -104,8 +104,8 @@
          style:font-weight={commonProps.fontWeight}>
       <div class="preview">{PREVIEW_TEXT}</div>
     </div>
-  </div>
-  <div class="comparison">
+  </section>
+  <section class="comparison">
     <ComparisonToggle bind:mode={resultMode} />
     <Comparison
             commonProps={commonProps}
@@ -120,7 +120,7 @@
             isValid={isResultValid(fallbackFontProps)}
             hidden={resultMode !== 'result'} />
     <Info hidden={resultMode !== 'info'} />
-  </div>
+  </section>
 </main>
 
 <style>

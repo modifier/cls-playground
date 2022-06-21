@@ -37,7 +37,7 @@
   <svg viewBox="0 0 24 24" class="upload-icon">
     <path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z" />
   </svg>
-  <span>Upload font</span>
+  Upload font
 </button>
 <input type="file" accept=".ttf,.otf,.woff,.woff2,.svg" bind:this={fileInput} on:change={doUpload} class="cls-control__hidden" />
 

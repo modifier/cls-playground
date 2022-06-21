@@ -32,15 +32,10 @@
        on:mousedown={start}
        on:mouseup={stop}
        on:mouseout={stop}
-       class="button" />
+       class="cls-control__button button" />
 
 <style>
   .button {
-    color: white;
     flex: 0 0 auto;
-    background-color: var(--primary-color);
-    border: var(--border-size) var(--primary-color) solid;
-    font-size: 1rem;
-    cursor: pointer;
   }
 </style>

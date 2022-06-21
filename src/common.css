@@ -1,16 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
 
-:root {
-  --sans-serif: "Open Sans", "Open Sans-fallback", sans-serif;
-  --monospace: "Inconsolata", "Inconsolata-fallback", monospace;
-  --primary-color: #50b9de;
-  --link-color: #2a92c6;
-  --border-color: #d9d9d9;
-  --border-size: calc(1rem / 16);
-  font-size: 16px;
-}
-
 @font-face {
   font-family: "Open Sans-fallback";
   src: local(Arial);
@@ -28,6 +18,16 @@
   size-adjust: 90%;
 }
 
+:root {
+  --sans-serif: "Open Sans", "Open Sans-fallback", sans-serif;
+  --monospace: "Inconsolata", "Inconsolata-fallback", monospace;
+  --primary-color: #50b9de;
+  --link-color: #2a92c6;
+  --border-color: #d9d9d9;
+  --border-size: calc(1rem / 16);
+  font-size: 16px;
+}
+
 html, body {
   min-height: 100vh;
 }
@@ -36,13 +36,23 @@ body {
   margin: 0;
 }
 
-.hidden {
-  display: none;
-}
-
 a, a:visited {
   color: var(--link-color);
   font-weight: 400;
+}
+
+pre {
+  margin: 0;
+  font-family: 'Inconsolata', 'inconsolata-fallback', monospace;
+  font-weight: 400;
+}
+
+li {
+  margin: 0.5rem 0;
+}
+
+.hidden {
+  display: none;
 }
 
 .cls-content {
@@ -129,4 +139,17 @@ a, a:visited {
 
 .cls-control__hidden {
   display: none;
+}
+
+.cls-control__button {
+  color: white;
+  background-color: var(--primary-color);
+  border: var(--border-size) var(--primary-color) solid;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  padding: 0;
 }
