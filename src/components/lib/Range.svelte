@@ -3,6 +3,7 @@
   import { createEventDispatcher } from "svelte";
   import ResetButton from "./ResetButton.svelte";
 
+  export let name;
   export let max = null;
   export let min = null;
   export let initial = 0;
@@ -99,6 +100,7 @@
   <RepeatButton action={decrease} value="&minus;" />
   <input
     type="number"
+    {name}
     bind:value
     {min}
     {max}

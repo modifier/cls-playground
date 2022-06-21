@@ -32,6 +32,7 @@
   {value}
   on:mousedown={start}
   on:mouseup={stop}
+  on:blur={stop}
   on:mouseout={stop}
   class="cls-control__button button"
 />

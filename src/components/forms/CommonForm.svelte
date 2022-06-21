@@ -5,8 +5,9 @@
 </script>
 
 <div class="cls-control">
-  <label class="cls-control__label">Font Size</label>
+  <label class="cls-control__label" for="fontSize">Font Size</label>
   <Range
+    name="fontSize"
     bind:value={value.fontSize}
     min={1}
     initial={16}
@@ -15,8 +16,9 @@
   />
 </div>
 <div class="cls-control">
-  <label class="cls-control__label">Font Weight</label>
+  <label class="cls-control__label" for="fontWeight">Font Weight</label>
   <Range
+    name="fontWeight"
     bind:value={value.fontWeight}
     max={900}
     min={100}
@@ -26,8 +28,9 @@
   />
 </div>
 <div class="cls-control">
-  <label class="cls-control__label">Line Height</label>
+  <label class="cls-control__label" for="lineHeight">Line Height</label>
   <Range
+    name="lineHeight"
     bind:value={value.lineHeight}
     integer={true}
     step={0.1}

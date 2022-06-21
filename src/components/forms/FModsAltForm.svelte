@@ -99,8 +99,9 @@
 </script>
 
 <div class="cls-control">
-  <label class="cls-control__label">Total Line Height</label>
+  <label class="cls-control__label" for="totalLineHeight">Total Line Height</label>
   <Range
+    name="totalLineHeight"
     bind:value={altValue.totalLineHeight}
     on:change={updateValue}
     min={minTotalHeight}
@@ -112,8 +113,9 @@
   />
 </div>
 <div class="cls-control">
-  <label class="cls-control__label">Ascent Height</label>
+  <label class="cls-control__label" for="ascentHeight">Ascent Height</label>
   <Range
+    name="ascentHeight"
     bind:value={altValue.ascentHeight}
     on:change={updateValue}
     min={minAscentHeight}
@@ -126,8 +128,9 @@
   />
 </div>
 <div class="cls-control">
-  <label class="cls-control__label">Line Gap Override</label>
+  <label class="cls-control__label" for="lineGapOverride">Line Gap Override</label>
   <Range
+    name="lineGapOverride"
     bind:value={altValue.lineGapOverride}
     on:change={updateValue}
     min={0}
