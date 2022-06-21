@@ -72,6 +72,7 @@
 
   .tab-button {
     font-size: 0.9rem;
+    margin: 0;
     cursor: pointer;
     padding: 1rem 0.25rem;
     display: inline-block;
