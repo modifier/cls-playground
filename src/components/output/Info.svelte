@@ -43,4 +43,7 @@
 </div>
 
 <style>
+  li {
+    margin: 0.5rem 0;
+  }
 </style>

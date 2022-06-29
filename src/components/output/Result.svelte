@@ -14,6 +14,12 @@
 </code>
 
 <style>
+  pre {
+    margin: 0;
+    font-family: "Inconsolata", "inconsolata-fallback", monospace;
+    font-weight: 400;
+  }
+
   .result {
     background-color: #fffcf2;
     padding: 1rem;

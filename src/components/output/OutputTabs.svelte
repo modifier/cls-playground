@@ -62,6 +62,10 @@
     --size: 6rem;
   }
 
+  li {
+    margin: 0.5rem 0;
+  }
+
   .tabs-container {
     width: fit-content;
     display: flex;

@@ -22,7 +22,7 @@
     font-size: 16px;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100%;
   }
 
   .cls-header {
@@ -46,5 +46,10 @@
     margin: 0 auto;
     flex: 0 0 auto;
     padding: 1rem 0;
+  }
+
+  a, a:visited {
+    color: var(--link-color);
+    font-weight: 400;
   }
 </style>

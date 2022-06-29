@@ -28,31 +28,16 @@
 }
 
 html,
-body {
-  min-height: 100vh;
+body,
+#app {
+  height: 100%;
 }
 
 body {
   margin: 0;
 }
 
-a,
-a:visited {
-  color: var(--link-color);
-  font-weight: 400;
-}
-
-pre {
-  margin: 0;
-  font-family: "Inconsolata", "inconsolata-fallback", monospace;
-  font-weight: 400;
-}
-
-li {
-  margin: 0.5rem 0;
-}
-
-.hidden {
+#app .hidden {
   display: none;
 }
 
