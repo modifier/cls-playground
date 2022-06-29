@@ -1,7 +1,7 @@
-import App from "./App.svelte";
+import AppLayout from "./AppLayout.svelte";
 import "./common.css";
 
-const app = new App({
+const app = new AppLayout({
   target: document.getElementById("app"),
 });
 

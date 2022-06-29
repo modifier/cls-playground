@@ -108,10 +108,25 @@
     left: calc(3 * (var(--distance) + var(--size)));
   }
 
-  @media screen and (max-width: 62rem) {
-    .tabs-container {
-      --distance: 1rem;
-      --size: 5rem;
+  @media screen and (max-width: 75rem) {
+    .output-tabs {
+      --distance: 0.5rem;
+      --size: 5.5rem;
+    }
+
+    .tab-button {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media screen and (max-width: 63rem) {
+    .output-tabs {
+      --distance: 0.5rem;
+      --size: 5.5rem;
+    }
+
+    .tab-button {
+      font-size: 0.85rem;
     }
   }
 

@@ -15,7 +15,9 @@
   />
 </div>
 <div class="cls-control">
-  <label class="cls-control__label" for="descentOverride">Descent Override</label>
+  <label class="cls-control__label" for="descentOverride"
+    >Descent Override</label
+  >
   <Range
     name="descentOverride"
     bind:value={value.descentOverride}
@@ -26,7 +28,9 @@
   />
 </div>
 <div class="cls-control">
-  <label class="cls-control__label" for="lineGapOverride">Line Gap Override</label>
+  <label class="cls-control__label" for="lineGapOverride"
+    >Line Gap Override</label
+  >
   <Range
     name="lineGapOverride"
     bind:value={value.lineGapOverride}

@@ -22,7 +22,13 @@
 {/if}
 <div class="cls-control">
   <label class="cls-control__label" for="sizeAdjust">Size Adjust</label>
-  <Range bind:value={value.sizeAdjust} min={0} initial={100} suffix="%" name="sizeAdjust" />
+  <Range
+    bind:value={value.sizeAdjust}
+    min={0}
+    initial={100}
+    suffix="%"
+    name="sizeAdjust"
+  />
 </div>
 
 <style>

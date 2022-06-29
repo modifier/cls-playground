@@ -144,8 +144,9 @@
     gap: 2rem;
     justify-content: center;
     position: relative;
-    flex: 0 1 81rem;
+    flex: 1 0 auto;
     padding: 0 1rem;
+    width: 100%;
   }
 
   .controls {
@@ -158,7 +159,7 @@
     grid-column-gap: 2rem;
   }
 
-  @media screen and (max-width: 62rem) {
+  @media screen and (max-width: 63rem) {
     .controls {
       grid-template-columns: 1fr;
     }
@@ -192,5 +193,6 @@
     max-width: 35rem;
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 </style>

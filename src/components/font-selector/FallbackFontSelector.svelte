@@ -25,7 +25,7 @@
   />
   <datalist id="safe-fonts">
     {#each SAFE_FONTS as family}
-      <option value={family}></option>
+      <option value={family} />
     {/each}
   </datalist>
 </div>

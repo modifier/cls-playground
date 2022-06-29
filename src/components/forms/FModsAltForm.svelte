@@ -39,13 +39,13 @@
 
   function getOriginalValues({
     totalLineHeight,
-                               baselineHeight,
+    baselineHeight,
     lineGapOverride,
     ...rest
   }) {
     if (
       totalLineHeight === null ||
-            baselineHeight === null ||
+      baselineHeight === null ||
       lineGapOverride === null
     ) {
       return {
@@ -99,7 +99,9 @@
 </script>
 
 <div class="cls-control">
-  <label class="cls-control__label" for="totalLineHeight">Total Line Height</label>
+  <label class="cls-control__label" for="totalLineHeight"
+    >Total Line Height</label
+  >
   <Range
     name="totalLineHeight"
     bind:value={altValue.totalLineHeight}
@@ -128,7 +130,9 @@
   />
 </div>
 <div class="cls-control">
-  <label class="cls-control__label" for="lineGapOverride">Line Gap Override</label>
+  <label class="cls-control__label" for="lineGapOverride"
+    >Line Gap Override</label
+  >
   <Range
     name="lineGapOverride"
     bind:value={altValue.lineGapOverride}

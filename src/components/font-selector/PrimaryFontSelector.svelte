@@ -70,7 +70,7 @@
     />
     <datalist id="families">
       {#each families as family}
-        <option value={family.family}></option>
+        <option value={family.family} />
       {/each}
     </datalist>
   {:else}

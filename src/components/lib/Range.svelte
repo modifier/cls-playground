@@ -124,6 +124,12 @@
     font-size: 1rem;
   }
 
+  @media screen and (max-width: 75rem) {
+    .range {
+      width: 7rem;
+    }
+  }
+
   .range--placeholder .suffix {
     display: none;
   }

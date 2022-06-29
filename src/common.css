@@ -25,7 +25,6 @@
   --link-color: #2a92c6;
   --border-color: #d9d9d9;
   --border-size: calc(1rem / 16);
-  font-size: 16px;
 }
 
 html,
@@ -57,41 +56,6 @@ li {
   display: none;
 }
 
-.cls-content {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.cls-header {
-  max-width: 1300px;
-  margin: 0 auto;
-  flex: 0 0 auto;
-  padding: 1rem 0;
-}
-
-.cls-header-title {
-  font-weight: 500;
-  margin: 0;
-}
-
-.cls-header-code {
-  font-family: var(--monospace);
-}
-
-.cls-app {
-  flex: 1 0 auto;
-  display: flex;
-  align-items: stretch;
-}
-
-.cls-footer {
-  max-width: 1300px;
-  margin: 0 auto;
-  flex: 0 0 auto;
-  padding: 1rem 0;
-}
-
 .cls-control {
   display: flex;
   width: 100%;
@@ -106,6 +70,13 @@ li {
 .cls-control__label {
   flex: 1 0 auto;
   width: 10rem;
+}
+
+@media screen and (max-width: 75rem) {
+  .cls-control__label {
+    width: 8rem;
+    font-size: 0.9rem;
+  }
 }
 
 .cls-control__text-label {
